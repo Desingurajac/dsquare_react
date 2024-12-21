@@ -1,0 +1,121 @@
+
+
+/* .bgc{
+    background: #1282a2 !important;
+} */
+/* .img1 {
+    border-radius: 0;
+} */
+
+.h3el{
+    /* margin-top: -45px !important; */
+    margin-bottom: 7px !important;
+    justify-content: 10px !important;
+    font-family: 'JosefinSans-Regular' !important;
+    color: white !important;
+    text-align: center !important;
+    font-size: 40px !important;
+    text-anchor: end !important;
+    }
+btn-br {
+    border-radius: 10px !important;
+   
+}
+button {
+    font-family:JosefinSans-Regular !important;
+    font-size: 22px !important;
+    border-radius: 10px !important;
+    margin-left: 75px !important;
+    height: 40px !important;
+    width: 5em !important;
+    /* background: #1282a2  !important; */
+    color: white !important;
+  
+  }
+
+.mb-3 {
+    margin-bottom: 1rem !important;
+    font-family: JosefinSans-Regular !important;
+    padding-left: 0.4em !important;
+    font-size: smaller !important;
+}
+
+.form-check {
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 0em !important;
+    margin-bottom: .125rem;
+}
+
+.form-check .form-check-input {
+    float: left;
+    margin-left: -1.em !important;
+    margin-top: -3px !important;
+    border-radius: 5px !important;
+
+}
+
+.frgt-pass-link {
+    margin-left: 10.3em !important;
+    margin-top: -1.6em !important;
+}
+
+.create-acct {
+    margin-left: -2em !important;
+    font-family: 'JosefinSans-Regular' !important;
+    font-size: smaller !important;
+    padding-top: 1.1em !important;
+}
+
+.create-link {
+    padding-left: 9px !important;
+}
+
+
+
+.wrapper {
+    background: #1282a2 !important;
+    /* background-image: url('/src/asserts/images/D-kart5.jpg') !important; */
+    justify-content: center !important;
+    align-items: center !important;
+    /* min-height: 100vh !important; */
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    display: flex !important;
+  }
+
+
+
+
+  .left-section {
+    flex: 1;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 20px !important;
+    background-color: #1282a2 !important;
+  }
+
+  .right-section {
+     /* background-image: url('/src/asserts/images/login.webp') !important; */
+    flex: 1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background-color: #dfe6e9 !important;
+  }
+  .right-section img {
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 10px !important;
+  }
+  .container {
+    display: flex !important;
+    height: 87vh !important;
+    margin-top: 17px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }

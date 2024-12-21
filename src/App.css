@@ -1,38 +1,220 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: "JosefinSans-Regular";
+  src: url("/src//asserts/font/JosefinSans-Regular.ttf");
+}
+
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+input {
+  font-family: JosefinSans-Regular !important;
+  color: black !important;
+  font-size: 25px !important;
+
+}
+
+textarea {
+  font-family: JosefinSans-Regular !important;
+  color: white !important;
+  font-size: 25px !important;
+
+}
+
+select {
+  font-family: JosefinSans-Regular !important;
+  color: white !important;
+  font-size: 25px !important;
+
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: JosefinSans-Regular;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+.wrapper {
+  min-height: 91vh !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+
+
+
+.form-group {
+  display: flex;
+}
+
+.form-group input {
+  width: 50%;
+}
+
+.form-group input:first-child {
+  margin-right: 25px;
+}
+
+.form-wrapper {
+  position: relative !important;
+}
+
+.form-wrapper i {
+  position: absolute !important;
+  bottom: 7px !important;
+  right: 13px !important;
+}
+
+
+
+.form-control::-webkit-input-placeholder {
+  font-size: 13px !important;
+  color: #333 !important;
+  font-family: "JosefinSans-Regular" !important;
+}
+
+.form-control::-moz-placeholder {
+  font-size: 13px !important;
+  color: #333 !important;
+  font-family: "JosefinSans-Regular" !important;
+}
+
+.form-control:-ms-input-placeholder {
+  font-size: 13px !important;
+  color: #333 !important;
+  font-family: "JosefinSans-Regular" !important;
+}
+
+.form-control:-moz-placeholder {
+  font-size: 13px !important;
+  color: #333 !important;
+  font-family: "JosefinSans-Regular" !important;
+}
+
+select {
+  cursor: pointer !important;
+  padding-left: 20px !important;
+}
+
+select option[value=""][disabled] {
+  display: none !important;
+}
+
+.inner {
+  background: #ffffff !important;
+  max-width: 50% !important;
+  max-height: 100% !important;
+  margin-right: auto !important;
+  display: flex !important;
+  border-radius: 0 !important;
+  position: relative;
+}
+
+.inner .image-holder {
+  width: 50% !important;
+}
+
+.inner form {
+  width: 50% !important;
+  padding-top: 36px !important;
+  padding-left: 45px !important;
+  padding-right: 45px !important;
+}
+
+.inner h3 {
+  text-transform: uppercase !important;
+  font-size: 25px !important;
+  font-family: JosefinSans-Regular !important;
+  text-align: center !important;
+  margin-bottom: 28px !important;
+  font-weight: bold !important;
+  margin-right: 25px !important;
+}
+
+button {
+  border: none;
+  border-radius: 12px;
+  width: 164px;
+  height: 51px;
+  margin: auto;
+  margin-top: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: #0A1128;
+  font-size: 15px;
+  color: #fff;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
+button i {
+  margin-left: 10px;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+button:hover i,
+button:focus i,
+button:active i {
+  -webkit-animation-name: hvr-icon-wobble-horizontal;
+  animation-name: hvr-icon-wobble-horizontal;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+
+.tool-bar {
+  font-family: "JosefinSans-Regular" !important;
+  color: #ffffff !important;
+  display: flex !important;
+  gap: .3rem !important;
+  align-items: center !important;
+  padding: 1rem !important;
+  border-radius: 10px !important;
+  /* margin-left: -100px !important; */
+  font-size: larger !important;
+}
+.main-align{
+margin-right: 10px !important;
+margin-left: 10px !important;
+}
+ .textfeild .MuiInputBase-root{
+  height: 3.4em !important;
+ }

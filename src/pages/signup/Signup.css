@@ -1,0 +1,91 @@
+
+button {
+    font-family:JosefinSans-Regular !important;
+    font-size: 22px !important;
+    border-radius: 10px !important;
+    margin-left: 55px !important;
+    height: 40px !important;
+    width: 5em !important;
+   
+  
+  }
+.signup-btn{
+ background: white !important;
+    color: #1282a2  !important;
+}
+.mb-3 {
+    margin-bottom: 1rem !important;
+    font-family: JosefinSans-Regular !important;
+    padding-left: 0.4em !important;
+    font-size: smaller !important;
+}
+
+.create-acct-signup {
+    margin-left: -2em !important;
+    font-family: 'JosefinSans-Regular' !important;
+    font-size: smaller !important;
+    padding-top: 1.1em !important;
+    color: white !important;
+
+}
+
+.create-link-signup {
+    padding-left: 9px !important;
+    color: white !important;
+}
+
+.fm-signup{
+    padding-top: 0px;
+    margin-left: 150px !important;
+    border-radius: 10px !important;
+    margin-top: 70px !important;
+    width: 240px;
+}
+.inner-signup {
+    background: #1282a2 !important;
+    max-width: 500px;
+    height: 630px !important;
+    margin-right: auto !important;
+    display: flex !important;
+    border-radius: 12px !important;
+    margin-left: -50px !important;
+    padding-top: 30px !important;
+}
+
+.h3elmnt{
+/* margin-top: -45px !important; */
+margin-bottom: 7px !important;
+justify-content: 10px !important;
+font-family: 'JosefinSans-Regular' !important;
+color: white !important;
+text-align: center !important;
+}
+
+.chk-gender{
+    display: flex !important ;
+        gap: 38px !important;
+        align-items: center !important;
+        color: white !important;
+}
+
+.chk-label{
+    margin-right: 2px !important;
+    margin-left: -37px !important;
+}
+.signup-form-check .form-check-input{
+    float: left !important;
+    margin-left: -1.1em !important;
+    border-radius: 13px !important;
+}
+/* .form-check .form-check-input {
+    float: left !important;
+    margin-left: -1.1em !important;
+    border-radius: 13px !important;
+} */
+.form-check-input:checked {
+    background-color: #1282a2 !important;
+    border-color: white !important;
+}
+.formGroup{
+    margin-top: -63px !important;
+}
