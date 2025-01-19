@@ -2,19 +2,16 @@ import React, { useState } from 'react'
 import { Container, Form } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import './Signup.css'
-// import { userSignup } from '../../service/Service';
 import { apiService } from '../../service/Service';
-// import { jwtDecode } from 'jwt-decode';
-// import jwt from "jsonwebtoken";
 
- const url = process.env.REACT_APP_API_BASE_URL;
-//  const jwt_key = process.env.REACT_APP_JWT_SECRET_KEY;
+
+const url = process.env.REACT_APP_API_BASE_URL;
+
 const Signup = () => {
 
 
   const [Error, setError] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-
   const [resData, setData] = useState('');
   const [signupData, setSignupData] = useState({
     firstname: '',
@@ -27,7 +24,7 @@ const Signup = () => {
 
   });
 
-    const handleChange = (e) => {
+  const handleChange = (e) => {
     const { name, value, checked, type } = e.target;
     setSignupData({
       ...signupData,
@@ -40,15 +37,11 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    // const token = jwt.sign(signupData, jwt_key, { expiresIn: "1h" });
     apiService.post(signupUrl, signupData)
       .then((response) => {
         setData(response);
-        // const token = resData.data.Token;
         const status = resData.status;
         if (status === 200 || status === 201) {
-          // localStorage.setItem('authToken', token);
-          // const decodeToken = jwtDecode(token);
           window.location.href = '/';
         }
 
@@ -62,7 +55,7 @@ const Signup = () => {
   };
 
   return (
-    <Container>
+    <div className='maindiv'>
       <div className='inner-signup'>
         <Form className='fm-signup' onSubmit={handleSubmit}>
           <Form.Group className='formGroup'>
@@ -182,7 +175,7 @@ const Signup = () => {
           </div> */}
 
             <div>
-              <button type='submit' className='signup-btn fw-bold' onClick={handleSubmit} >Signup</button>
+              <button type='submit' className='signup-btn fw-bold'  >Signup</button>
             </div>
             <div className=" create-acct-signup ">
               <span>Have already an account?</span>
@@ -191,7 +184,7 @@ const Signup = () => {
           </Form.Group>
         </Form>
       </div>
-    </Container>
+    </div>
   )
 }
 

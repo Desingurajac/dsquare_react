@@ -79,3 +79,7 @@ ul li:hover,
 ul li a.active{
     background: #172b4d;
 }
+
+.sidebar.visible {
+    transform: translateX(0); /* Show sidebar */
+  }

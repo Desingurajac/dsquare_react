@@ -5,10 +5,12 @@ button {
     border-radius: 10px !important;
     margin-left: 55px !important;
     height: 40px !important;
-    width: 5em !important;
-   
-  
+    width: 5em !important;  
   }
+
+.maindiv{
+    padding-left: 10px;
+}
 .signup-btn{
  background: white !important;
     color: #1282a2  !important;
@@ -35,21 +37,21 @@ button {
 }
 
 .fm-signup{
-    padding-top: 0px;
-    margin-left: 150px !important;
-    border-radius: 10px !important;
-    margin-top: 70px !important;
-    width: 240px;
+    /* padding-top: 0px; */
+    margin-left: 130px !important;
+    /* border-radius: 10px !important; */
+    /* margin-top: 70px !important; */
+    width: 265px;
+    text-align: center;
 }
 .inner-signup {
     background: #1282a2 !important;
     max-width: 500px;
     height: 630px !important;
-    margin-right: auto !important;
-    display: flex !important;
-    border-radius: 12px !important;
-    margin-left: -50px !important;
-    padding-top: 30px !important;
+    border-radius: 65px 0px 65px 0px !important;
+    margin-top: 10px;
+    padding-top: 12px;
+    text-align: center;
 }
 
 .h3elmnt{
@@ -86,6 +88,6 @@ text-align: center !important;
     background-color: #1282a2 !important;
     border-color: white !important;
 }
-.formGroup{
+/* .formGroup{
     margin-top: -63px !important;
-}
+} */

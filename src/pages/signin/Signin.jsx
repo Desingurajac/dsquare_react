@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Signin.css'
-import { Container, Form, Image } from 'react-bootstrap';
+import { Form, Image } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import { apiService } from '../../service/Service';
 import { jwtDecode } from 'jwt-decode';
@@ -16,20 +16,17 @@ export const Signin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [resData, setData] = useState('');
-
-
-  const loginUrl = (`${url}/user/login`);
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    const loginUrl = (`${url}/user/login`);
     const loginData = { email: email, password: password }
     apiService.post(loginUrl, loginData)
       .then((response) => {
-        setData(response);
-        const token = resData.data.Token;
-        const status = resData.status;
+        const status = response.status;
         if (status === 200) {
+          const token = response.data.Token;
           localStorage.setItem('authToken', token);
           const decodeToken = jwtDecode(token);
           localStorage.setItem('userId', decodeToken.userid);
@@ -40,21 +37,31 @@ export const Signin = () => {
       .catch((error) => {
         const errorMessage = error.response?.data?.message || error.message || "An unknown error occurred";
         setError(errorMessage);
-        //  console.error("Error fetching products:", error);
         console.log("Error   =>", errorMessage);
       })
   };
 
+  const mailHandling = async (e) => {
+      const valueEmail = e.target.value;
+       setEmail(valueEmail);
+    if (emailRegex.test(valueEmail)) {
+      setError("")
+    }else{
+      setError("Invalid email format"); 
+    }
+
+  }
+
   return (
 
-      <div className='container'>
-        
-       <div className='left-section'>
+    <div className='container'>
+
+      <div className='left-section'>
         <Form className='form' onSubmit={handleSubmit}>
           <Form.Group>
             <h3 className='h3el'>Login</h3>
             {
-              error && <p className="error">{error}</p>
+              error && <p className="error errorcl">{error}</p>
 
             }
 
@@ -64,7 +71,7 @@ export const Signin = () => {
                 type='email'
                 placeholder='Enter the Email'
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={mailHandling}
                 autoComplete='email' />
               <i className="bi bi-person"></i>
             </div>
@@ -96,13 +103,13 @@ export const Signin = () => {
             </div>
           </Form.Group>
         </Form>
-        </div>
-       <div className='right-section'>
-          <Image src={require('/DesingRaja/ReactApp/dkart/src/asserts/images/login.webp')}
-            alt='Second Slide'></Image>
-        </div>
       </div>
-    
+      <div className='right-section'>
+        <Image src={require('/Raja/React_Dsquare/dkart/src/asserts/images/login.webp')}
+          alt='Second Slide'></Image>
+      </div>
+    </div>
+
   )
 }
 

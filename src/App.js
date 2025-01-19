@@ -1,22 +1,19 @@
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Dashboard } from './pages/dashboard/Dashboard';
-import { Signin } from './pages/signin/Signin';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './pages/home/Home'
-import Signup from './pages/signup/Signup';
-import Forgotpassword from './pages/forgotpassword/Forgotpassword';
-import AddNewProducts from './pages/product/addnewproduct/AddNewProducts';
-import NotFound from './components/notfound/NotFound';
+import {Home,Contactus,Dashboard,Forgotpassword,AddNewProduct,Profile,Signup,NotFound,ProductList} from './lazyloading'
+import { Signin } from './pages/signin/Signin';
 import Layout from './Layout';
+
 
 function App() {
 
 
   return (
     <Router>
+       <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route path="/" element={<Layout />} >
           <Route path='/login' element={<Signin />} />
@@ -24,10 +21,14 @@ function App() {
           <Route index element={<Home />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/forgotpassword' element={<Forgotpassword />} />
-          <Route path='/add-product' element={<AddNewProducts />} />
+          <Route path='/add-product' element={<AddNewProduct />} />
+          <Route path='/product-list' element={<ProductList /> } />
+          <Route path='/profile' element={< Profile/> } />
+          <Route path='/contact-us' element={<Contactus/>} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
+      </Suspense>
     </Router>
 
   );

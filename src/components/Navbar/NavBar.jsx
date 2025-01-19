@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import './NavBar.css';
-import { IoMdMenu } from "react-icons/io";
-// import Layout from '../../Layout';
 import { IoMenu } from "react-icons/io5";
 import Sidebar from '../sidebar/Sidebar';
 
-export const NavBar = () => {
+export const NavBar = ({ toggleSidebar }) => {
 
     const [showSideBar, setshowSideBar] = useState(false);
     const location = useLocation();
@@ -22,7 +19,7 @@ export const NavBar = () => {
 
                 {location.pathname !== '/' && location.pathname !== '/login' && location.pathname !== '/signup' && (
                     <div className='tool-bar' >
-                        <div className="icon-size" onClick={() => setshowSideBar(!showSideBar)}><IoMenu /></div>
+                        <div className="icon-size" onClick={() =>{ setshowSideBar(!showSideBar); toggleSidebar()} }><IoMenu /></div>
                     </div>
                 )}
                 <Navbar.Collapse id="basic-navbar-nav" className='justify-content-end'>

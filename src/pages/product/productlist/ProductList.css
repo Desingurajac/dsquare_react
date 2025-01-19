@@ -1,0 +1,15 @@
+.tabcell{
+    font-family: JosefinSans-Regular !important;
+    font-weight: 400;
+    font-size: 1rem !important;
+    line-height: 1.43;
+    letter-spacing: 0.01071em;
+    display: table-cell;
+    vertical-align: inherit;
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+    text-align: left;
+    padding: 3px;
+    color: rgba(0, 0, 0, 0.87);
+    line-height: 1.2rem;
+    font-weight: 500;
+}

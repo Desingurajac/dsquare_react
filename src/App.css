@@ -28,7 +28,7 @@
 
 
 input {
-  font-family: JosefinSans-Regular !important;
+  /* font-family: JosefinSans-Regular !important; */
   color: black !important;
   font-size: 25px !important;
 
@@ -211,10 +211,36 @@ button:active i {
   /* margin-left: -100px !important; */
   font-size: larger !important;
 }
-.main-align{
-margin-right: 10px !important;
-margin-left: 10px !important;
+
+/* .main-align {
+  margin-right: 10px !important;
+  margin-left: 10px !important;
+} */
+.main-align {
+  transition: margin-left 0.3s ease, width 0.3s ease;
+  margin-left: 0; /* Default */
+  width: 100%;    /* Default full width */
 }
- .textfeild .MuiInputBase-root{
+
+.main-with-sidebar {
+  margin-left: 250px; /* Adjust based on the sidebar's width */
+  width: calc(100% - 250px); /* Reduce width when sidebar is visible */
+}
+
+.textfeild .MuiInputBase-root {
   height: 3.4em !important;
- }
+}
+.MuiTableCell-roo
+{
+  padding: 0;
+}
+textarea {
+  font-family: JosefinSans-Regular !important;
+  color: black !important;
+  font-size: 20px !important;
+  height: 56px !important;
+  overflow: hidden !important;
+  width: 370px !important;
+
+
+}

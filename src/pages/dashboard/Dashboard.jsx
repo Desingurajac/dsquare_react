@@ -5,8 +5,7 @@ export const Dashboard = () => {
     
   return (
     <div>Dashboard
-     <button className='test'> Test </button>
-
+   
     </div>
     
   )
