@@ -1,0 +1,9 @@
+.dcontent{
+    padding-top: 5px !important;
+    overflow-y: hidden !important;
+}
+
+.daction{
+    padding: 0px 0px 10px 0px !important;
+    justify-content: center !important;
+}

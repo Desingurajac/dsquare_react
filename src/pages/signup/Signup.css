@@ -1,4 +1,4 @@
-
+/* 
 button {
     font-family:JosefinSans-Regular !important;
     font-size: 22px !important;
@@ -6,7 +6,7 @@ button {
     margin-left: 55px !important;
     height: 40px !important;
     width: 5em !important;  
-  }
+  } */
 
 .maindiv{
     padding-left: 10px;
@@ -37,12 +37,10 @@ button {
 }
 
 .fm-signup{
-    /* padding-top: 0px; */
-    margin-left: 130px !important;
-    /* border-radius: 10px !important; */
-    /* margin-top: 70px !important; */
-    width: 265px;
-    text-align: center;
+    margin-left: 53px !important;
+    width: 80% !important;
+    text-align: center !important;
+    padding-top: 12px !important;
 }
 .inner-signup {
     background: #1282a2 !important;
@@ -65,29 +63,22 @@ text-align: center !important;
 
 .chk-gender{
     display: flex !important ;
-        gap: 38px !important;
-        align-items: center !important;
+        /* gap: 38px !important;
+        align-items: center !important; */
         color: white !important;
 }
 
 .chk-label{
     margin-right: 2px !important;
-    margin-left: -37px !important;
+    /* margin-left: -37px !important; */
 }
 .signup-form-check .form-check-input{
     float: left !important;
     margin-left: -1.1em !important;
     border-radius: 13px !important;
 }
-/* .form-check .form-check-input {
-    float: left !important;
-    margin-left: -1.1em !important;
-    border-radius: 13px !important;
-} */
+
 .form-check-input:checked {
     background-color: #1282a2 !important;
     border-color: white !important;
 }
-/* .formGroup{
-    margin-top: -63px !important;
-} */

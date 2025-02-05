@@ -3,6 +3,8 @@ import { Container, Form } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import './Signup.css'
 import { apiService } from '../../service/Service';
+import DSButton from '../../components/ds-button/DSButton';
+import SnackBar from '../../components/snackbar/SnackBar';
 
 
 const url = process.env.REACT_APP_API_BASE_URL;
@@ -13,6 +15,12 @@ const Signup = () => {
   const [Error, setError] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [resData, setData] = useState('');
+   const [isSnackBar, setIsSnackBar] = useState({
+      open: false,
+      vertical: 'top',
+      horizontal: 'center',
+    })
+    const [snackBarMsg, setSnackBarMsg] = useState('')
   const [signupData, setSignupData] = useState({
     firstname: '',
     lastname: '',
@@ -33,10 +41,13 @@ const Signup = () => {
 
   };
 
+ 
   const signupUrl = (`${url}/user/signup`);
   const handleSubmit = async (e) => {
+
     e.preventDefault();
-    setError('');
+    const PasswordValidation = validation(signupData.password,confirmPassword);
+     if(PasswordValidation){
     apiService.post(signupUrl, signupData)
       .then((response) => {
         setData(response);
@@ -49,18 +60,38 @@ const Signup = () => {
       .catch((error) => {
         const errorMessage = error.response?.data?.message || error.message;
         setError(errorMessage);
-        //  console.error("Error fetching products:", error);
-        console.log("Error   =>", Error);
-      })
+           })
+    }else{
+      setSnackBarMsg("Password Mismatch!")
+      setIsSnackBar({ open: true });
+      setTimeout(() => {
+        setIsSnackBar({ open: false });
+      }, 3000);
+      }
   };
 
+  const validation = (password,confirmPassword) =>{
+    if(password !== confirmPassword || password === '' || confirmPassword === ''){
+      return false;
+    }else{
+      return true;
+    }
+  }
   return (
+   <div className='bgc'>
+           {
+        isSnackBar.open &&
+        <SnackBar
+          message={snackBarMsg}
+          variant="error"
+        />
+      }
     <div className='maindiv'>
       <div className='inner-signup'>
         <Form className='fm-signup' onSubmit={handleSubmit}>
           <Form.Group className='formGroup'>
             <h3 className='h3elmnt'> Signup</h3>
-            <div className='form-wrapper'>
+                 <div className='form-wrapper'>
               <Form.Control
                 className='form-control'
                 type='text'
@@ -163,7 +194,7 @@ const Signup = () => {
                 autoComplete='password' />
               <i className="bi bi-eye"></i>
             </div>
-
+          
             {/* <div className='form-wrapper'>
             <Form.Control className='form-control'
               type='password'
@@ -175,7 +206,7 @@ const Signup = () => {
           </div> */}
 
             <div>
-              <button type='submit' className='signup-btn fw-bold'  >Signup</button>
+              <DSButton type='submit' text="Signup" className='fw-bold' onClick={handleSubmit}  ></DSButton>
             </div>
             <div className=" create-acct-signup ">
               <span>Have already an account?</span>
@@ -184,6 +215,8 @@ const Signup = () => {
           </Form.Group>
         </Form>
       </div>
+   
+    </div>
     </div>
   )
 }

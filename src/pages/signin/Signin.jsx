@@ -4,6 +4,7 @@ import { Form, Image } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import { apiService } from '../../service/Service';
 import { jwtDecode } from 'jwt-decode';
+import DSButton from '../../components/ds-button/DSButton.jsx';
 
 
 
@@ -42,74 +43,76 @@ export const Signin = () => {
   };
 
   const mailHandling = async (e) => {
-      const valueEmail = e.target.value;
-       setEmail(valueEmail);
+    const valueEmail = e.target.value;
+    setEmail(valueEmail);
     if (emailRegex.test(valueEmail)) {
       setError("")
-    }else{
-      setError("Invalid email format"); 
+    } else {
+      setError("Invalid email format");
     }
 
   }
 
   return (
 
-    <div className='container'>
+    <div className='bgc'>
+      <div className='container'>
+        <div className='left-section'>
+          <Form className='form mainform' onSubmit={handleSubmit}>
+            <Form.Group>
+              <h3 className='h3el'>Login</h3>
+              {
+                error && <p className="error errorcl">{error}</p>
 
-      <div className='left-section'>
-        <Form className='form' onSubmit={handleSubmit}>
-          <Form.Group>
-            <h3 className='h3el'>Login</h3>
-            {
-              error && <p className="error errorcl">{error}</p>
+              }
 
-            }
-
-            <div className='form-wrapper'>
-              <Form.Control
-                className='form-control'
-                type='email'
-                placeholder='Enter the Email'
-                value={email}
-                onChange={mailHandling}
-                autoComplete='email' />
-              <i className="bi bi-person"></i>
-            </div>
-            <div className='form-wrapper'>
-              <Form.Control className='form-control'
-                type='password'
-                placeholder='Enter the Password'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                autoComplete='current-password' />
-              <i className="bi bi-eye-slash"></i>
-            </div>
-
-            <div className="mb-3">
-              <Form.Check // prettier-ignore
-                type='checkbox'
-                label='Reminder me'
-              />
-              <div className="forgot-password frgt-pass-link">
-                <Link to="/forgotpassword">Forgot Password?</Link>
+              <div className='form-wrapper'>
+                <Form.Control
+                  className='form-control'
+                  type='email'
+                  placeholder='Enter the Email'
+                  value={email}
+                  onChange={mailHandling}
+                  autoComplete='email' />
+                <i className="bi bi-person"></i>
               </div>
-            </div>
-            <div>
-              <button type='submit' className='btn-br fw-bold' onClick={handleSubmit} >Login</button>
-            </div>
-            <div className="forgot-password create-acct">
-              <span>Not on Account?</span>
-              <Link className='create-link' to="/signup">Create an account</Link>
-            </div>
-          </Form.Group>
-        </Form>
-      </div>
-      <div className='right-section'>
-        <Image src={require('/Raja/React_Dsquare/dkart/src/asserts/images/login.webp')}
-          alt='Second Slide'></Image>
+              <div className='form-wrapper'>
+                <Form.Control className='form-control'
+                  type='password'
+                  placeholder='Enter the Password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  autoComplete='current-password' />
+                <i className="bi bi-eye-slash"></i>
+              </div>
+             
+              <div className="mb-3">
+                                    <Form.Check // prettier-ignore
+                  type='checkbox'
+                  label='Reminder me'
+                />
+                 <div className="frgt-pass-link">
+                  <Link to="/forgotpassword">Forgot Password?</Link>
+                </div>
+               </div>
+              
+              <div>
+                  <DSButton type="submit" text="Login" className='btn-br' onClick={handleSubmit}></DSButton>
+              </div>
+              <div className="create-acct">
+                <span>Not on Account?</span>
+                <Link className='create-link' to="/signup">Create an account</Link>
+              </div>
+            
+            </Form.Group>
+          </Form>
+        </div>
+        <div className='right-section'>
+          <Image src={require('/Raja/React_Dsquare/dkart/src/asserts/images/login.webp')}
+            alt='Second Slide'></Image>
+        </div>
       </div>
     </div>
-
   )
 }
 

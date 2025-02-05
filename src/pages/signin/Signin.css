@@ -1,45 +1,48 @@
+ .bgc{
+    /* background: #1282a2 !important; */
+    padding: 1px 0px 14px 0px;
+   
+    background: aqua !important;
+}
 
-
-/* .bgc{
-    background: #1282a2 !important;
-} */
 /* .img1 {
     border-radius: 0;
 } */
 
- label.form-check-label{
+label.form-check-label {
     color: white;
- }
-.errorcl{
+    margin-right: 10px;
+}
+
+.errorcl {
     font-family: 'JosefinSans-Regular' !important;
     color: white !important;
     text-align: center !important;
 }
-.h3el{
-    /* margin-top: -45px !important; */
+
+.h3el {
     margin-bottom: 7px !important;
-    justify-content: 10px !important;
     font-family: 'JosefinSans-Regular' !important;
     color: white !important;
     text-align: center !important;
     font-size: 40px !important;
     text-anchor: end !important;
-    }
+}
+
 btn-br {
     border-radius: 10px !important;
-   
+
 }
-button {
-    font-family:JosefinSans-Regular !important;
+
+/* button {
+    font-family: JosefinSans-Regular !important;
     font-size: 12px !important;
     border-radius: 10px !important;
     margin-left: 75px !important;
     height: 40px !important;
     width: 12em !important;
-    /* background: #1282a2  !important; */
     color: white !important;
-  
-  }
+} */
 
 .mb-3 {
     margin-bottom: 1rem !important;
@@ -51,7 +54,7 @@ button {
 .form-check {
     display: block;
     min-height: 1.5rem;
-    padding-left: 0em !important;
+    padding-left: 2.5em !important;
     margin-bottom: .125rem;
 }
 
@@ -64,16 +67,19 @@ button {
 }
 
 .frgt-pass-link {
-    margin-left: 10.3em !important;
-    margin-top: -1.6em !important;
+    margin-left: 22.5em !important;
+    margin-top: -1.9em !important;
+    position: absolute;
 }
 
+
 .create-acct {
-    margin-left: -2em !important;
+    margin-left: 0em !important;
     font-family: 'JosefinSans-Regular' !important;
     color: white;
     font-size: smaller !important;
     padding-top: 1.1em !important;
+    text-align: center;
 }
 
 .create-link {
@@ -93,13 +99,16 @@ button {
     background-position: center !important;
     background-attachment: fixed !important;
     display: flex !important;
-  }
+}
+
+.mainform {
+    width: 100%;
+    /* text-align: center;   */
+}
 
 
-
-
-  .left-section {
-    flex: 1;
+.left-section {
+    flex: .5;
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
@@ -107,26 +116,30 @@ button {
     padding: 20px !important;
     background-color: #1282a2 !important;
     border-radius: 12px 0px 0px 12px !important;
-  }
+    box-shadow: 6px 0px 6px 6px
+}
 
-  .right-section {
-     /* background-image: url('/src/asserts/images/login.webp') !important; */
-    flex: 1 !important;
+.right-section {
+    /* background-image: url('/src/asserts/images/login.webp') !important; */
+    /* flex: 1 !important; */
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     background-color: #dfe6e9 !important;
     border-radius: 0px 12px 12px 0px !important;
-    
-  }
-  .right-section img {
+    box-shadow: 6px 0px 6px 6px
+
+}
+
+.right-section img {
     max-width: 100% !important;
     height: auto !important;
-  }
-  .container {
+}
+
+.container {
     display: flex !important;
     height: 87vh !important;
     margin-top: 17px !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
-  }
+}

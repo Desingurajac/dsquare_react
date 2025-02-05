@@ -10,7 +10,7 @@ const ProductList = () => {
     const [formData, setFormData] = useState([])
     const isFetched = useRef(false);
 
-    
+
     useEffect(() => {
         const fetchProducts = async () => {
             if (isFetched.current) return;
@@ -31,15 +31,11 @@ const ProductList = () => {
     }, []);
 
     useEffect(() => {
-       
     }, [formData]);
+
     const handleUpdate = () => {
-        alert("Test")
+        
     }
-
-
-
-
     return (
         <TableContainer component={Paper}>
             <Table>
@@ -72,15 +68,15 @@ const ProductList = () => {
 
                 <TableBody>
                     {formData.map((product) => (
-                        <TableRow key={product.productId}>
+                        <TableRow key={product._id}>
                             <TableCell className='tabcell'>{product.productName}</TableCell>
-                            <TableCell className='tabcell'>{product.brandId}</TableCell>
-                            <TableCell className='tabcell'>{product.mainCategory}</TableCell>
-                            <TableCell className='tabcell'>{product.subCategory1}</TableCell>
-                            <TableCell className='tabcell'>{product.subCategory2}</TableCell>
-                            <TableCell className='tabcell'>{product.subCategory3}</TableCell>
-                            <TableCell className='tabcell'>{product.subCategory4}</TableCell>
-                            <TableCell className='tabcell'>{product.subCategory5}</TableCell>
+                            <TableCell className='tabcell'>{product.brandName}</TableCell>
+                            <TableCell className='tabcell'>{product.mainCategoryName}</TableCell>
+                            <TableCell className='tabcell'>{product.subCategory1Name}</TableCell>
+                            <TableCell className='tabcell'>{product.subCategory2Name}</TableCell>
+                            <TableCell className='tabcell'>{product.subCategory3Name}</TableCell>
+                            <TableCell className='tabcell'>{product.subCategory4Name}</TableCell>
+                            <TableCell className='tabcell'>{product.subCategory5Name}</TableCell>
                             <TableCell className='tabcell'>{product.price}</TableCell>
                             <TableCell className='tabcell'>{product.discount}</TableCell>
                             <TableCell className='tabcell'>{product.stockQty}</TableCell>
@@ -96,7 +92,7 @@ const ProductList = () => {
 
                             <TableCell>
                                 {product.productId && (
-                                    <Button onClick={() => handleUpdate(product.productId)}>Update</Button>
+                                    <Button onClick={() => handleUpdate(product._id)}>Update</Button>
                                 )}
                             </TableCell>
                         </TableRow>

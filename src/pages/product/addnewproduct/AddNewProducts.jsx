@@ -7,6 +7,7 @@ import { apiService } from '../../../service/Service';
 import { IoMdAdd } from "react-icons/io";
 import { jwtDecode } from 'jwt-decode';
 import SnackBar from '../../../components/snackbar/SnackBar';
+import DSButton from '../../../components/ds-button/DSButton';
 
 const AddNewProducts = () => {
 
@@ -42,25 +43,25 @@ const AddNewProducts = () => {
   })
   const [snackBarMsg, setSnackBarMsg] = useState('')
   const [formData, setFormData] = useState({
-    brandId: null,
+    brandId: "",
     productName: "",
-    mainCategory: null,
-    subCategory1: null,
-    subCategory2: null,
-    subCategory3: null,
-    subCategory4: null,
-    subCategory5: null,
-    price: null,
-    discount: null,
-    stockQty: null,
-    minimumStockQty: null,
-    maximumStockQty: null,
+    mainCategory: "",
+    subCategory1: "",
+    subCategory2: "",
+    subCategory3: "",
+    subCategory4: "",
+    subCategory5: "",
+    price: "",
+    discount: "",
+    stockQty: "",
+    minimumStockQty: "",
+    maximumStockQty: "",
     size: "",
     color: "",
     images: "",
-    weight: null,
-    shippingCost: null,
-    distributorId: null,
+    weight: "",
+    shippingCost: "",
+    distributorId: "",
     description: "",
     isActive: true
   });
@@ -75,8 +76,7 @@ const AddNewProducts = () => {
       if (status === 200 || status === 201) {
         const token = response.data.token;
         const decodeToken = jwtDecode(token);
-        const decodeData = jwtDecode(decodeToken.Data)
-        setBrandList(decodeData.brandList)
+         setBrandList(decodeToken.Data)
       }
     } catch (error) {
       console.error('Error fetching product list:', error.message);
@@ -197,8 +197,7 @@ const AddNewProducts = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const addProductUrl = (`${url}/product/add-new-products`);
-    alert(JSON.stringify(formData));
-    apiService.post(addProductUrl, formData)
+     apiService.post(addProductUrl, formData)
       .then((response) => {
         const status = response.status;
         if (status === 200 || status === 201) {
@@ -467,7 +466,7 @@ const AddNewProducts = () => {
         <Grid container spacing={2}>
           {/* Title */}
           <Grid item xs={12}>
-            <Typography>
+            <Typography className='fw-bold'>
               Add New Product
             </Typography>
           </Grid>
@@ -770,7 +769,7 @@ const AddNewProducts = () => {
                 onChange={handleChange}
                 required
               >
-                <MenuItem value={1}>Black`</MenuItem>
+                <MenuItem value={1}>Black</MenuItem>
                 <MenuItem value={2}>Red</MenuItem>
                 <MenuItem value={3}>Blue</MenuItem>
                 <MenuItem value={4}>Pink</MenuItem>
@@ -829,16 +828,18 @@ const AddNewProducts = () => {
             </FormControl>
           </Grid>
           <Grid item xs={2}>
-            <FormControlLabel
-              label="isActive"
-              control={<Switch checked={formData.isActive}
-                onChange={(e) => handleChange(e)} />}
-              labelPlacement="start"
+            <FormControl fullWidth>
+              <FormControlLabel
+                label="isActive"
+                control={<Switch checked={formData.isActive}
+                  onChange={(e) => handleChange(e)} />}
+                labelPlacement="start"
 
-              name='isActive'
+                name='isActive'
 
-              required
-            />
+                required
+              />
+            </FormControl>
           </Grid>
 
           <Grid item xs={4}>
@@ -854,10 +855,11 @@ const AddNewProducts = () => {
 
           </Grid>
           <Grid item xs={6} className='rightAlign'>
-            <Button type='button' variant="contained" onClick={productList}>Product List</Button>
+            <DSButton type='button' text="Product List" className='cust-btn' onClick={productList}></DSButton>
+            {/* <Button type='button' variant="contained" onClick={productList}>Product List</Button> */}
           </Grid>
           <Grid item xs={6} className='rightAlign'>
-            <Button type='submit' variant="contained">Submit</Button>
+            <DSButton type='submit' text='Submit'></DSButton>
           </Grid>
 
         </Grid>
@@ -1515,4 +1517,4 @@ const AddNewProducts = () => {
   )
 }
 
-export default AddNewProducts
+export default AddNewProducts;

@@ -160,25 +160,26 @@ select option[value=""][disabled] {
 }
 
 button {
-  border: none;
-  border-radius: 12px;
-  width: 164px;
-  height: 51px;
-  margin: auto;
-  margin-top: 40px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background: #0A1128;
-  font-size: 15px;
-  color: #fff;
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
+  font-family: "JosefinSans-Regular" !important;
+  border: none !important;
+  border-radius: 12px !important;
+  width: 100px !important;
+  height: 45px !important;
+  margin: auto !important;
+  margin-top: 40px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  background: #0A1128 !important;
+  font-size: 15px !important;
+  color: #fff !important;
+  vertical-align: middle !important;
+  -webkit-transform: perspective(1px) translateZ(0) !important;
+  transform: perspective(1px) translateZ(0) !important;
+  -webkit-transition-duration: 0.3s !important;
+  transition-duration: 0.3s !important;
 }
 
 button i {
@@ -238,9 +239,22 @@ textarea {
   font-family: JosefinSans-Regular !important;
   color: black !important;
   font-size: 20px !important;
-  height: 56px !important;
+  height: 50px !important;
   overflow: hidden !important;
   width: 370px !important;
 
 
+}
+.frmpad{
+  padding: 20px;
+}
+
+.custom-table-container * {
+  font-family: "JosefinSans-Regular" !important;
+}
+
+.DSTableContainer .MuiButtonBase-root {
+  width: 35px !important;
+  height: 25px !important;
+  margin-top: 10px !important;
 }

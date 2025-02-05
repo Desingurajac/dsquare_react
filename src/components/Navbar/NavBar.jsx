@@ -31,7 +31,7 @@ export const NavBar = ({ toggleSidebar }) => {
                         </Nav>
                     ) : (
                         <Nav>
-                            <Nav.Link href="/" className='text-primary fw-bold'>Logout</Nav.Link>
+                            <Nav.Link href="/login" className='text-primary fw-bold'>Logout</Nav.Link>
                             <Nav.Link href="/user-profile" className='text-primary fw-bold'>Profile</Nav.Link>
                         </Nav>
 
