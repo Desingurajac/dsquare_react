@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import DSTableContainer from '../../../components/ds-table-container/DSTableContainer'
-import { Typography } from '@mui/material';
 import { apiService } from '../../../service/Service';
 import { jwtDecode } from 'jwt-decode';
 
@@ -13,7 +12,7 @@ const VendorList = () => {
     const vendorListUrl = `${baseUrl}/vendor/get-vendor-details`;
 
     try {
-      const vendorDetails = await apiService.get(vendorListUrl)
+      await apiService.get(vendorListUrl)
         .then((response) => {
           const status = response.status;
           if (status === 200 || status === 201) {

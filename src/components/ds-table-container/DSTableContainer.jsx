@@ -6,10 +6,6 @@ const DSTableContainer = ({ columns, data, rowsPerPageOptions, classname,title})
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(rowsPerPageOptions[0]);
 
-//   Handle Page Change
-const handleChange = (event, newPage) => {
-    setPage(newPage);
-};
 // Handle Rows Per Page
 const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));

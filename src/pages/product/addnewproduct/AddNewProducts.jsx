@@ -264,12 +264,11 @@ const AddNewProducts = () => {
         if (status === 200 || status === 201) {
           const token = response.data.Token;
           const decodeToken = jwtDecode(token);
-          console.log("decodeData", decodeToken)
-          setMainCategoryList(decodeToken.brandList)
+           setMainCategoryList(decodeToken.brandList)
+           fetchMainCategoryList();
           setSnackBarMsg(decodeToken.message)
           setIsSnackBar({ open: true });
-          fetchMainCategoryList();
-          setTimeout(() => {
+                    setTimeout(() => {
             setIsSnackBar({ open: false });
           }, 3000);
         }
