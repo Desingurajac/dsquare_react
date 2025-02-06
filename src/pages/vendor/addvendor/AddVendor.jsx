@@ -90,7 +90,8 @@ const AddVendor = () => {
                     label: item.brandName
                 }));
                 setBrand(formatedOption)
-            }
+            } 
+            
         } catch (error) {
             console.error('Error fetching product list:', error.message);
         }
