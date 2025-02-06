@@ -107,7 +107,7 @@ export const Signin = () => {
           </Form>
         </div>
         <div className='right-section'>
-          <Image src={require('/Raja/React_Dsquare/dkart/src/asserts/images/login.webp')}
+          <Image src={require('./asserts/images/login.webp')}
             alt='Second Slide'></Image>
         </div>
       </div>
