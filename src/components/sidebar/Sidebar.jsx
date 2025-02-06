@@ -5,9 +5,7 @@ import DSwhite from '../../asserts/images/DS-white.png';
 import { LuLayoutDashboard } from "react-icons/lu";
 import { RiProductHuntLine } from "react-icons/ri";
 import { FaAngleDown, FaAngleRight, FaPhoneSquareAlt } from "react-icons/fa";
-// import { HiPlus } from "react-icons/hi";
 import { HiUsers } from "react-icons/hi2";
-import { PiUserListFill } from "react-icons/pi";
 
 function Sidebar({ showSideBar, isVisible }) {
   const [openModule, setOpenModule] = useState(null);

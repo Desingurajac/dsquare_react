@@ -38,7 +38,6 @@ export const Signin = () => {
       .catch((error) => {
         const errorMessage = error.response?.data?.message || error.message || "An unknown error occurred";
         setError(errorMessage);
-        console.log("Error   =>", errorMessage);
       })
   };
 
@@ -85,25 +84,25 @@ export const Signin = () => {
                   autoComplete='current-password' />
                 <i className="bi bi-eye-slash"></i>
               </div>
-             
+
               <div className="mb-3">
-                                    <Form.Check // prettier-ignore
+                <Form.Check // prettier-ignore
                   type='checkbox'
                   label='Reminder me'
                 />
-                 <div className="frgt-pass-link">
+                <div className="frgt-pass-link">
                   <Link to="/forgotpassword">Forgot Password?</Link>
                 </div>
-               </div>
-              
+              </div>
+
               <div>
-                  <DSButton type="submit" text="Login" className='btn-br' onClick={handleSubmit}></DSButton>
+                <DSButton type="submit" text="Login" className='btn-br' onClick={handleSubmit}></DSButton>
               </div>
               <div className="create-acct">
                 <span>Not on Account?</span>
                 <Link className='create-link' to="/signup">Create an account</Link>
               </div>
-            
+
             </Form.Group>
           </Form>
         </div>

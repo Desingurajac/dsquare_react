@@ -23,7 +23,7 @@ const Role = () => {
         permission: [],
         isactive: true,
         userid: Number(localStorage.getItem("userId"))
-      };
+    };
     const [formData, setFormData] = useState(initialFormData)
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -32,7 +32,6 @@ const Role = () => {
             [name]: type === "checkbox" ? checked : value
 
         }));
-        //    console.log(" ===>",formData.rolename )
     }
 
     const handleSubmit = async (e) => {
@@ -40,7 +39,7 @@ const Role = () => {
 
         try {
             const addRoleUrl = `${url}/role/add-new-role`;
-                await apiService.post(addRoleUrl, formData)
+            await apiService.post(addRoleUrl, formData)
                 .then((Response) => {
                     const status = Response.status;
                     if (status === 200 || status === 201) {
@@ -54,7 +53,7 @@ const Role = () => {
 
                     }
                 })
-                setFormData(initialFormData)
+            setFormData(initialFormData)
         } catch (error) {
 
         }

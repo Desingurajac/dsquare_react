@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Container, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import './Signup.css'
 import { apiService } from '../../service/Service';

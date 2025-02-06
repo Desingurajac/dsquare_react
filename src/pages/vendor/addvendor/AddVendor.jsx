@@ -2,14 +2,13 @@ import { Dialog, DialogActions, DialogContent, DialogTitle, Grid, Typography } f
 import React, { useEffect, useRef, useState } from 'react'
 import { Form } from 'react-bootstrap'
 import DSInput from '../../../components/ds-input/DSInput'
-import { Preview } from '@mui/icons-material'
 import DSButton from '../../../components/ds-button/DSButton'
 import { getCity, getCountry, getState } from '../../../service/CommonApi'
 import { jwtDecode } from 'jwt-decode'
 import './AddVendor.css'
 import { apiService } from '../../../service/Service'
 import SnackBar from '../../../components/snackbar/SnackBar'
-import AddNewProducts from '../../product/addnewproduct/AddNewProducts'
+
 const AddVendor = () => {
     const url = process.env.REACT_APP_API_BASE_URL;
     const [isSnackBar, setIsSnackBar] = useState({
@@ -23,7 +22,6 @@ const AddVendor = () => {
     const [vendorType, setVendorType] = useState([]);
     const [dialogOpen, setDialogOpen] = useState(false);
     const [addVendorType, setAddVendorType] = useState('')
-    const [vendorTypeList, setVendorTypeList] = useState([]);
     const [country, setCountry] = useState([]);
     const [state, setState] = useState([]);
     const [city, setCity] = useState([]);
@@ -90,8 +88,8 @@ const AddVendor = () => {
                     label: item.brandName
                 }));
                 setBrand(formatedOption)
-            } 
-            
+            }
+
         } catch (error) {
             console.error('Error fetching product list:', error.message);
         }
@@ -227,7 +225,6 @@ const AddVendor = () => {
                     if (status === 200 || status === 201) {
                         const token = response.data.Token;
                         const decodeToken = jwtDecode(token);
-                        // setVendorTypeList(decodeToken.data);
                         setSnackBarMsg(decodeToken.message)
                         fetchVedorTypeList();
                         setVariant('success');
@@ -444,7 +441,7 @@ const AddVendor = () => {
                 isSnackBar.open &&
                 <SnackBar
                     message={snackBarMsg}
-                    variant="success"
+                    variant={variant}
                 />
             }
 

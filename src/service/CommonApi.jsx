@@ -1,6 +1,4 @@
-import React from "react";
 import { apiService } from "./Service";
-import { jwtDecode } from 'jwt-decode';
 const CommonUrl = process.env.REACT_APP_COMMON_API;
 
 const getCountryUrl = `${CommonUrl}/common/country-list`;
