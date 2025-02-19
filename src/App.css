@@ -1,37 +1,22 @@
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 @font-face {
   font-family: "JosefinSans-Regular";
   src: url("/src//asserts/font/JosefinSans-Regular.ttf");
 }
 
-
 * {
+  font-family: "JosefinSans-Regular" !important;
+} 
+/* * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-}
+} */
 
 
 input {
-  /* font-family: JosefinSans-Regular !important; */
   color: black !important;
-  font-size: 25px !important;
-
+  font-size: 15px !important;
 }
 
 textarea {
@@ -166,7 +151,8 @@ button {
   width: 100px !important;
   height: 45px !important;
   margin: auto !important;
-  margin-top: 40px !important;
+  margin-top: 25px !important;
+  border-radius: 10px !important;
   cursor: pointer !important;
   display: flex !important;
   align-items: center !important;
@@ -200,7 +186,7 @@ button:active i {
   -webkit-animation-iteration-count: 1;
   animation-iteration-count: 1;
 }
-
+/* 
 .tool-bar {
   font-family: "JosefinSans-Regular" !important;
   color: #ffffff !important;
@@ -209,28 +195,23 @@ button:active i {
   align-items: center !important;
   padding: 1rem !important;
   border-radius: 10px !important;
-  /* margin-left: -100px !important; */
   font-size: larger !important;
-}
-
-/* .main-align {
-  margin-right: 10px !important;
-  margin-left: 10px !important;
 } */
 .main-align {
   transition: margin-left 0.3s ease, width 0.3s ease;
   margin-left: 0; /* Default */
   width: 100%;    /* Default full width */
-}
+} 
 
 .main-with-sidebar {
   margin-left: 250px; /* Adjust based on the sidebar's width */
   width: calc(100% - 250px); /* Reduce width when sidebar is visible */
 }
 
-.textfeild .MuiInputBase-root {
+.textfield .MuiInputBase-root {
   height: 3.4em !important;
 }
+
 .MuiTableCell-roo
 {
   padding: 0;
@@ -258,3 +239,16 @@ textarea {
   height: 25px !important;
   margin-top: 10px !important;
 }
+
+/* DSInput component */
+.MuiInputAdornment-root .iconvis{
+  cursor: pointer !important;
+}
+
+
+.title {
+  font-family: 'JosefinSans-Regular' !important;
+  color: black !important;
+  font-size: 30px !important;
+}
+

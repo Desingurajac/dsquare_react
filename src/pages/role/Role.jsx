@@ -7,15 +7,12 @@ import { DSTextArea } from '../../components/ds-textarea/DSTextArea'
 import DSButton from '../../components/ds-button/DSButton';
 import { apiService } from '../../service/Service'
 import { jwtDecode } from 'jwt-decode'
-import SnackBar from '../../components/snackbar/SnackBar'
+import DSSnackbar from '../../components/ds-snackbar/DSSnackbar'
+
 
 const Role = () => {
     const url = process.env.REACT_APP_API_BASE_URL;
-    const [isSnackBar, setIsSnackBar] = useState({
-        open: false,
-        vertical: 'top',
-        horizontal: 'center',
-    })
+    const [isSnackBar, setIsSnackBar] = useState(false)
     const [snackBarMsg, setSnackBarMsg] = useState('')
     const initialFormData = {
         roleName: "",
@@ -46,16 +43,15 @@ const Role = () => {
                         const token = Response.data.Token;
                         const decodeToken = jwtDecode(token);
                         setSnackBarMsg(decodeToken.message)
-                        setIsSnackBar({ open: true });
-                        setTimeout(() => {
-                            setIsSnackBar({ open: false });
-                        }, 3000);
-
+                        setIsSnackBar(true);
+                      
                     }
                 })
             setFormData(initialFormData)
         } catch (error) {
-
+            console.log(error)
+            setSnackBarMsg(error.response.data.error)
+            setIsSnackBar(true);
         }
 
 
@@ -77,7 +73,7 @@ const Role = () => {
                         <DSSwitch label='IsActive' checked={formData.isactive} onChange={handleChange} name='isactive'></DSSwitch>
                     </Grid>
                     <Grid item xs={4}>
-                        <DSTextArea name='description' className='textfeild' value={formData.description} onChange={handleChange} placeholder='Enter the Description' minrows='1' required={true}></DSTextArea>
+                        <DSTextArea name='description' className='textfield' value={formData.description} onChange={handleChange} placeholder='Enter the Description' minrows='1' required={true}></DSTextArea>
                     </Grid>
                     <Grid item xs={12}>
                         <DSButton type='submit' text='Save'  ></DSButton>
@@ -85,10 +81,12 @@ const Role = () => {
                 </Grid>
             </Form>
             {
-                isSnackBar.open &&
-                <SnackBar
+                isSnackBar &&
+                <DSSnackbar
+                    open={isSnackBar}
                     message={snackBarMsg}
-                    variant="success"
+                    variant="error"
+                    onClose={() => setIsSnackBar(false)}
                 />
             }
         </div>

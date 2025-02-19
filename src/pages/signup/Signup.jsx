@@ -1,27 +1,30 @@
 import React, { useState } from 'react'
-import { Form } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import './Signup.css'
 import { apiService } from '../../service/Service';
 import DSButton from '../../components/ds-button/DSButton';
-import SnackBar from '../../components/snackbar/SnackBar';
+import { Grid, Typography } from '@mui/material';
+import { Form, Image } from 'react-bootstrap';
+import DSInput from '../../components/ds-input/DSInput';
+import DSRadio from '../../components/ds-radio/DSRadio';
+import { FaUser } from 'react-icons/fa';
+import DSSnackbar from '../../components/ds-snackbar/DSSnackbar';
 
 
 const url = process.env.REACT_APP_API_BASE_URL;
 
 const Signup = () => {
 
-
+  const genderOption = [{ value: "male", label: "Male", color: "black" },
+  { value: "female", label: "Female", color: "black" },
+  { value: "other", label: "Other", color: "black" }
+  ]
   const [Error, setError] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [resData, setData] = useState('');
-   const [isSnackBar, setIsSnackBar] = useState({
-      open: false,
-      vertical: 'top',
-      horizontal: 'center',
-    })
-    const [snackBarMsg, setSnackBarMsg] = useState('')
-  const [signupData, setSignupData] = useState({
+  const [isSnackBar, setIsSnackBar] = useState(false);
+  const [snackBarMsg, setSnackBarMsg] = useState('');
+  const initialFormData = {
     firstname: '',
     lastname: '',
     gender: '',
@@ -29,194 +32,164 @@ const Signup = () => {
     email: '',
     mobileno: '',
     password: '',
-
-  });
+  };
+  const [formData, setFormData] = useState(initialFormData);
 
   const handleChange = (e) => {
     const { name, value, checked, type } = e.target;
-    setSignupData({
-      ...signupData,
+    setFormData({
+      ...formData,
       [name]: type === "radio" ? (checked ? value : "") : value
     });
 
   };
 
- 
+
   const signupUrl = (`${url}/user/signup`);
   const handleSubmit = async (e) => {
 
     e.preventDefault();
-    const PasswordValidation = validation(signupData.password,confirmPassword);
-     if(PasswordValidation){
-    apiService.post(signupUrl, signupData)
-      .then((response) => {
-        setData(response);
-        const status = resData.status;
-        if (status === 200 || status === 201) {
-          window.location.href = '/';
-        }
-
-      })
-      .catch((error) => {
-        const errorMessage = error.response?.data?.message || error.message;
-        setError(errorMessage);
-           })
-    }else{
-      setSnackBarMsg("Password Mismatch!")
-      setIsSnackBar({ open: true });
-      setTimeout(() => {
-        setIsSnackBar({ open: false });
-      }, 3000);
-      }
+    const PasswordValidation = validation(formData.password, confirmPassword);
+    if (PasswordValidation) {
+      await apiService.post(signupUrl, formData)
+        .then((response) => {
+          console.log(response)
+          setData(response);
+          const status = resData.status;
+          if (status === 200 || status === 201) {
+            setSnackBarMsg(response.data.message)
+            setIsSnackBar(true);
+            window.location.href = '/login';
+          }
+          setFormData(initialFormData);
+        })
+        .catch((error) => {
+          setSnackBarMsg(error.response.data.message)
+          setIsSnackBar(true);
+        })
+    } else {
+      setSnackBarMsg("Password mismatch")
+      setIsSnackBar(true);
+    }
   };
 
-  const validation = (password,confirmPassword) =>{
-    if(password !== confirmPassword || password === '' || confirmPassword === ''){
+  const validation = (password, confirmPassword) => {
+    if (password !== confirmPassword || password === '' || confirmPassword === '') {
       return false;
-    }else{
+    } else {
       return true;
     }
   }
   return (
-   <div className='bgc'>
-           {
-        isSnackBar.open &&
-        <SnackBar
+    <div className='maindiv'>
+      {
+        isSnackBar &&
+        <DSSnackbar
+          open={isSnackBar}
           message={snackBarMsg}
           variant="error"
+          onClose={() => setIsSnackBar(false)}
         />
       }
-    <div className='maindiv'>
-      <div className='inner-signup'>
-        <Form className='fm-signup' onSubmit={handleSubmit}>
-          <Form.Group className='formGroup'>
-            <h3 className='h3elmnt'> Signup</h3>
-                 <div className='form-wrapper'>
-              <Form.Control
-                className='form-control'
-                type='text'
-                placeholder='Enter the First Name'
-                value={signupData.firstname}
-                onChange={handleChange}
-                name="firstname"
-                autoComplete='firstname' />
+      <Form className='fm-signup' onSubmit={handleSubmit}>
+        <Grid container className='maingrid' spacing={2}>
+          <Grid className='leftgrid' item xs={6}>
+            <Image className='img' src={require('../../asserts/images/signup.webp')} alt='Second Slide'>
+            </Image>
+          </Grid>
 
-            </div>
-            <div className='form-wrapper'>
-              <Form.Control className='form-control'
-                type='text'
-                placeholder='Enter the Last Name'
-                value={signupData.lastname}
-                onChange={handleChange}
-                name="lastname"
-                autoComplete='lastname' />
+          {/* Right Side Signup form */}
 
-            </div>
+          <Grid item xs={6} className='rightgrid'>
+            <Form.Group className='formGroup'>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <Typography className='title'>Signup</Typography>
+                </Grid>
+                <Grid item xs={6}>
+                  <DSInput
+                    label='First Name'
+                    type='text'
+                    name='firstname'
+                    value={formData.firstname}
+                    onChange={handleChange}
+                    required={true}></DSInput>
+                </Grid>
+                <Grid item xs={6}>
+                  <DSInput
+                    label='Last Name'
+                    type='text'
+                    name='lastname'
+                    value={formData.lastname}
+                    onChange={handleChange}
+                    required={true}></DSInput>
+                </Grid>
+                {/* <Grid item xs={12}>
+                    <DSRadio label='Gender' option={genderOption} onchange={handleChange}></DSRadio>
+                        </Grid> */}
+                {/* <Grid item xs={6}>
+                    <DSInput
+                      label='Date of Birth'
+                      type='date'
+                      name='dob'
+                      value={formData.dob}
+                      onChange={handleChange}
+                      required={true}></DSInput>
 
-            <div className="mb-3 chk-gender"  >
-              <Form.Label className='chk-label'>Gender</Form.Label>
-              <Form.Check className='signup-form-check .form-check-input'
-                type="radio"
-                label="Male"
-                name="gender"
-                value="male"
-                checked={signupData.gender === 'male'}
-                onChange={handleChange}
-              />
-              <Form.Check className='signup-form-check .form-check-input'
-                type="radio"
-                label="Female"
-                name="gender"
-                value="female"
-                checked={signupData.gender === 'female'}
-                onChange={handleChange}
-              />
-              <Form.Check className='signup-form-check .form-check-input'
-                type="radio"
-                label="Other"
-                name="gender"
-                value="other"
-                checked={signupData.gender === 'other'}
-                onChange={handleChange}
-              />
-
-            </div>
-            <div className='form-wrapper'>
-              <Form.Control
-                className='form-control'
-                type='date'
-                placeholder='Select your Date of birth'
-                value={signupData.dob}
-                name="dob"
-                onChange={handleChange}
-                autoComplete='bday' />
-
-            </div>
-
-            <div className='form-wrapper'>
-              <Form.Control className='form-control'
-                type='number'
-                placeholder='Enter the Mobile number'
-                value={signupData.mobile}
-                onChange={handleChange}
-                name="mobileno"
-                autoComplete='mobileno' />
-              <i className="bi bi-phone"></i>
-            </div>
-
-            <div className='form-wrapper'>
-              <Form.Control className='form-control'
-                type='email'
-                placeholder='Enter the Email'
-                value={signupData.email}
-                onChange={handleChange}
-                name="email"
-                autoComplete='email' />
-              <i className="bi bi-person"></i>
-            </div>
-            <div className='form-wrapper'>
-              <Form.Control className='form-control'
-                type='password'
-                placeholder='Enter the Password'
-                value={signupData.password}
-                name="password"
-                onChange={handleChange}
-                autoComplete='password' />
-              <i className="bi bi-eye-slash"></i>
-            </div>
-            <div className='form-wrapper'>
-              <Form.Control className='form-control'
-                type='text'
-                placeholder='Re-Enter the Password'
-                value={confirmPassword}
-                name='password'
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                autoComplete='password' />
-              <i className="bi bi-eye"></i>
-            </div>
-          
-            {/* <div className='form-wrapper'>
-            <Form.Control className='form-control'
-              type='password'
-              placeholder='Enter the Password'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              autoComplete='current-password' />
-            <i className="bi bi-eye-slash"></i>
-          </div> */}
-
-            <div>
-              <DSButton type='submit' text="Signup" className='fw-bold' onClick={handleSubmit}  ></DSButton>
-            </div>
-            <div className=" create-acct-signup ">
-              <span>Have already an account?</span>
-              <Link className='create-link-signup' to="/">Login</Link>
-            </div>
-          </Form.Group>
-        </Form>
-      </div>
-   
-    </div>
+                  </Grid> */}
+                <Grid item xs={6}>
+                  <DSInput
+                    label='Mobile Number'
+                    type='number'
+                    name='mobileno'
+                    value={formData.mobileno}
+                    onChange={handleChange}
+                    required={true}></DSInput>
+                </Grid>
+                <Grid item xs={6}>
+                  <DSInput
+                    label='Email'
+                    type='email'
+                    name='email'
+                    value={formData.email}
+                    onChange={handleChange}
+                    icon={<FaUser />}
+                    required={true}></DSInput>
+                </Grid>
+                <Grid item xs={6}>
+                  <DSInput
+                    label='Password'
+                    type='password'
+                    name='password'
+                    value={formData.password}
+                    onChange={handleChange}
+                    required={true}></DSInput>
+                </Grid>
+                <Grid item xs={6}>
+                  <DSInput
+                    label='Confirm Password'
+                    type='text'
+                    name='password'
+                    value={confirmPassword}
+                    required={true}
+                    onChange={(e) => setConfirmPassword(e.target.value)}></DSInput>
+                </Grid>
+                <Grid item xs={12}>
+                  <div>
+                    <DSButton type='submit' text="Signup" className='fw-bold' ></DSButton>
+                  </div>
+                </Grid>
+                <Grid item xs={12}>
+                  <div className=" create-acct-signup ">
+                    <span>Have already an account?</span>
+                    <Link className='create-link-signup' to="/login">Login</Link>
+                  </div>
+                </Grid>
+              </Grid>
+            </Form.Group>
+          </Grid>
+        </Grid>
+      </Form>
     </div>
   )
 }

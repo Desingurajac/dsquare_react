@@ -13,11 +13,12 @@ const AddNewProduct = React.lazy(() => import("./pages/product/addnewproduct/Add
 const ProductList = React.lazy(() => import("./pages/product/productlist/ProductList"));
 
 const AddRole = React.lazy(() => import("./pages/role/Role"));
+const RoleList = React.lazy(() => import("./pages/role/role-list/RoleList"));
 
 const AddVendor = React.lazy(() => import("./pages/vendor/addvendor/AddVendor"));
 const VendorList = React.lazy(() =>import("./pages/vendor/vendorlist/VendorList"))
 export {
     Home, Contactus, Dashboard, Forgotpassword,
     AddNewProduct, Profile, Signup, NotFound, ProductList,
-    AddRole, AddVendor,VendorList
+    AddRole, AddVendor,VendorList,RoleList
 };
