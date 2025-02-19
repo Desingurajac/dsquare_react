@@ -7,15 +7,11 @@ import { getCity, getCountry, getState } from '../../../service/CommonApi'
 import { jwtDecode } from 'jwt-decode'
 import './AddVendor.css'
 import { apiService } from '../../../service/Service'
-import SnackBar from '../../../components/snackbar/SnackBar'
+import DSSnackbar from '../../../components/ds-snackbar/DSSnackbar'
 
 const AddVendor = () => {
     const url = process.env.REACT_APP_API_BASE_URL;
-    const [isSnackBar, setIsSnackBar] = useState({
-        open: false,
-        vertical: 'top',
-        horizontal: 'center',
-    });
+    const [isSnackBar, setIsSnackBar] = useState(false);
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const [variant, setVariant] = useState('');
     const [snackBarMsg, setSnackBarMsg] = useState('');
@@ -27,7 +23,7 @@ const AddVendor = () => {
     const [city, setCity] = useState([]);
     const [brand, setBrand] = useState([]);
     const formRef = useRef(null);
-    const [formData, setFormData] = useState({
+    const initialFormData = {
         vendorname: "",
         vendortype_id: "",
         creditterm: "",
@@ -42,7 +38,8 @@ const AddVendor = () => {
         contactno: "",
         emailid: "",
         brandid: ""
-    });
+    };
+    const [formData, setFormData] = useState(initialFormData);
 
 
     const fetchVedorTypeList = () => {
@@ -66,11 +63,7 @@ const AddVendor = () => {
         } catch (error) {
             setSnackBarMsg(error.message);
             setVariant('error');
-            setIsSnackBar({ open: true });
-            setTimeout(() => {
-                setIsSnackBar({ open: false });
-                setVariant('');
-            }, 3000);
+            setIsSnackBar(true);
         }
     }
 
@@ -103,6 +96,7 @@ const AddVendor = () => {
                 const token = response.data.token;
                 const decodeToken = jwtDecode(token);
                 const data = decodeToken.Data;
+
                 const formatedOption = data.map(item => ({
                     value: item.id,
                     label: item.name
@@ -112,11 +106,7 @@ const AddVendor = () => {
         } catch (error) {
             setSnackBarMsg(error.message);
             setVariant('error');
-            setIsSnackBar({ open: true });
-            setTimeout(() => {
-                setIsSnackBar({ open: false });
-                setVariant('');
-            }, 3000);
+            setIsSnackBar(true);
         }
     }
 
@@ -139,7 +129,6 @@ const AddVendor = () => {
         } catch (error) {
 
         }
-
     }
 
     const fetchStateList = async (id) => {
@@ -180,26 +169,15 @@ const AddVendor = () => {
                         const decodeToken = jwtDecode(token);
                         setSnackBarMsg(decodeToken.message);
                         setVariant('success');
-                        setIsSnackBar({ open: true });
-                        formRef.current.reset();
-                        setTimeout(() => {
-                            setIsSnackBar({ open: false });
-                            setVariant('');
-                        }, 3000);
+                        setIsSnackBar(true);
                     }
-
-
+                    setFormData(initialFormData)
                 })
         } catch (error) {
             setSnackBarMsg(error.message);
             setVariant('error');
-            setIsSnackBar({ open: true });
-            setTimeout(() => {
-                setIsSnackBar({ open: false });
-                setVariant('');
-            }, 3000);
+            setIsSnackBar(true);
         }
-
     }
 
     const handleChange = (e) => {
@@ -223,27 +201,22 @@ const AddVendor = () => {
                 .then((response) => {
                     const status = response.status;
                     if (status === 200 || status === 201) {
-                        const token = response.data.Token;
+                        const token = response.data.token;
                         const decodeToken = jwtDecode(token);
+                        console.log(decodeToken)
                         setSnackBarMsg(decodeToken.message)
                         fetchVedorTypeList();
                         setVariant('success');
-                        setIsSnackBar({ open: true });
-                        setTimeout(() => {
-                            setIsSnackBar({ open: false });
-                            setVariant('');
-                        }, 3000);
+                        setIsSnackBar(true);
+                        setDialogOpen(false);
+                        setAddVendorType('')
                     }
 
                 })
         } catch (error) {
             setSnackBarMsg(error.message);
             setVariant('error');
-            setIsSnackBar({ open: true });
-            setTimeout(() => {
-                setIsSnackBar({ open: false });
-                setVariant('');
-            }, 3000);
+            setIsSnackBar(true);
         }
     }
 
@@ -253,7 +226,7 @@ const AddVendor = () => {
     }
     return (
         <div>
-            <div>
+            {/* <div> */}
                 <Form className='frmpad' ref={formRef} onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
@@ -386,7 +359,7 @@ const AddVendor = () => {
                                 name='contactno'
                                 value={formData.contactno}
                                 onChange={handleChange}
-                                required={true} >
+                                >
                             </DSInput>
                         </Grid>
                         <Grid item xs={3}>
@@ -415,7 +388,7 @@ const AddVendor = () => {
                         </Grid>
                     </Grid>
                 </Form>
-            </div>
+            {/* </div> */}
             {dialogOpen &&
                 <div>
                     <Dialog open={dialogOpen} onClose={handleOpenAddvendorDialog} fullWidth maxWidth="sm">
@@ -438,10 +411,12 @@ const AddVendor = () => {
             }
 
             {
-                isSnackBar.open &&
-                <SnackBar
+                isSnackBar &&
+                <DSSnackbar
+                    open={isSnackBar}
                     message={snackBarMsg}
-                    variant={variant}
+                    variant="error"
+                    onClose={() => setIsSnackBar(false)}
                 />
             }
 

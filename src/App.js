@@ -3,7 +3,9 @@ import React, { Suspense } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import {Home,Contactus,Dashboard,Forgotpassword,AddNewProduct,Profile,Signup,NotFound,ProductList, AddRole, AddVendor, VendorList} from './lazyloading'
+import {Home,Contactus,Dashboard,Forgotpassword,AddNewProduct,
+        Profile,Signup,NotFound,ProductList, AddRole, AddVendor, 
+        VendorList, RoleList} from './lazyloading'
 import { Signin } from './pages/signin/Signin';
 import Layout from './Layout';
 
@@ -28,6 +30,7 @@ function App() {
           <Route path='/vendor-list' element={<VendorList />} />
           <Route path='/contact-us' element={<Contactus/>} />
           <Route path='/add-role' element={<AddRole />} />
+          <Route path='/role-list' element={<RoleList />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

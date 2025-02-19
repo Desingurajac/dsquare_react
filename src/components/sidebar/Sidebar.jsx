@@ -21,7 +21,7 @@ function Sidebar({ showSideBar, isVisible }) {
       icon: <LuLayoutDashboard />,
       subModules: [
         { name: "Add Role", path: "/add-role" },
-        { name: "Manage Roles", path: "" }
+        { name: "Roles List", path: "/role-list" }
       ]
     },
     {

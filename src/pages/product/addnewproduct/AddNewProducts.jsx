@@ -6,8 +6,8 @@ import { Form } from 'react-bootstrap';
 import { apiService } from '../../../service/Service';
 import { IoMdAdd } from "react-icons/io";
 import { jwtDecode } from 'jwt-decode';
-import SnackBar from '../../../components/snackbar/SnackBar';
 import DSButton from '../../../components/ds-button/DSButton';
+import DSSnackbar from '../../../components/ds-snackbar/DSSnackbar';
 
 const AddNewProducts = () => {
 
@@ -36,11 +36,7 @@ const AddNewProducts = () => {
   const [isOpenAddCategory3, setIsOpenAddCategory3] = useState(false)
   const [isOpenAddCategory4, setIsOpenAddCategory4] = useState(false)
   const [isOpenAddCategory5, setIsOpenAddCategory5] = useState(false)
-  const [isSnackBar, setIsSnackBar] = useState({
-    open: false,
-    vertical: 'top',
-    horizontal: 'center',
-  })
+  const [isSnackBar, setIsSnackBar] = useState(false)
   const [snackBarMsg, setSnackBarMsg] = useState('')
   const [formData, setFormData] = useState({
     brandId: "",
@@ -233,9 +229,9 @@ const AddNewProducts = () => {
           setBrandList(decodeToken.brandList)
           setSnackBarMsg(decodeToken.message)
           fetchbrandList();
-          setIsSnackBar({ open: true });
+          setIsSnackBar(true);
           setTimeout(() => {
-            setIsSnackBar({ open: false });
+            setIsSnackBar(false);
           }, 3000);
         }
 
@@ -267,9 +263,9 @@ const AddNewProducts = () => {
            setMainCategoryList(decodeToken.brandList)
            fetchMainCategoryList();
           setSnackBarMsg(decodeToken.message)
-          setIsSnackBar({ open: true });
+          setIsSnackBar(true);
                     setTimeout(() => {
-            setIsSnackBar({ open: false });
+            setIsSnackBar(false);
           }, 3000);
         }
 
@@ -300,10 +296,10 @@ const AddNewProducts = () => {
           const decodeToken = jwtDecode(token);
           setCategory1List(decodeToken.brandList)
           setSnackBarMsg(decodeToken.message)
-          setIsSnackBar({ open: true });
+          setIsSnackBar(true);
           fetchCategory1List(formData.mainCategory);
           setTimeout(() => {
-            setIsSnackBar({ open: false });
+            setIsSnackBar(false);
           }, 3000);
         }
 
@@ -334,10 +330,10 @@ const AddNewProducts = () => {
           const decodeToken = jwtDecode(token);
           setCategory2List(decodeToken.brandList)
           setSnackBarMsg(decodeToken.message)
-          setIsSnackBar({ open: true });
+          setIsSnackBar(true);
           fetchCategory2List(formData.mainCategory);
           setTimeout(() => {
-            setIsSnackBar({ open: false });
+            setIsSnackBar(false);
           }, 3000);
         }
 
@@ -372,10 +368,10 @@ const AddNewProducts = () => {
           const decodeToken = jwtDecode(token);
           setCategory3List(decodeToken.brandList)
           setSnackBarMsg(decodeToken.message)
-          setIsSnackBar({ open: true });
+          setIsSnackBar(true);
           fetchCategory3List(formData.mainCategory);
           setTimeout(() => {
-            setIsSnackBar({ open: false });
+            setIsSnackBar(false);
           }, 3000);
         }
 
@@ -409,10 +405,10 @@ const AddNewProducts = () => {
           const decodeToken = jwtDecode(token);
           setCategory4List(decodeToken.brandList)
           setSnackBarMsg(decodeToken.message)
-          setIsSnackBar({ open: true });
+          setIsSnackBar(true);
           fetchCategory4List(formData.mainCategory);
           setTimeout(() => {
-            setIsSnackBar({ open: false });
+            setIsSnackBar(false);
           }, 3000);
         }
 
@@ -445,10 +441,10 @@ const AddNewProducts = () => {
           const decodeToken = jwtDecode(token);
           setCategory5List(decodeToken.brandList)
           setSnackBarMsg(decodeToken.message)
-          setIsSnackBar({ open: true });
+          setIsSnackBar(true);
           fetchCategory5List(formData.mainCategory);
           setTimeout(() => {
-            setIsSnackBar({ open: false });
+            setIsSnackBar(false);
           }, 3000);
         }
 
@@ -457,6 +453,15 @@ const AddNewProducts = () => {
   }
   return (
     <div>
+          {
+        isSnackBar &&
+        <DSSnackbar
+        open={isSnackBar}
+        message={snackBarMsg}
+        variant="error"
+        onClose={() =>setIsSnackBar(false)}
+        />
+      }
       {
         error && <p className="error errorcl">{error}</p>
 
@@ -1503,14 +1508,7 @@ const AddNewProducts = () => {
         </div>
       }
 
-      {
-        isSnackBar.open &&
-        <SnackBar
-          message={snackBarMsg}
-          variant="success"
-        />
-      }
-
+  
     </div>
 
   )
