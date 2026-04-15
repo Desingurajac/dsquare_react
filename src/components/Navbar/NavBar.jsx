@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './NavBar.css';
-import DSLogo from '../../asserts/images/DSLogo1.png';
 import { IoMenu } from "react-icons/io5";
 import Sidebar from '../sidebar/Sidebar';
 import Box from '@mui/material/Box';

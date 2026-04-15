@@ -1,5 +1,5 @@
 import { Dialog, DialogActions, DialogContent, DialogTitle, Grid, Typography } from '@mui/material'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Form } from 'react-bootstrap'
 import DSInput from '../../../components/ds-input/DSInput'
 import DSButton from '../../../components/ds-button/DSButton'
@@ -12,7 +12,7 @@ import DSSnackbar from '../../../components/ds-snackbar/DSSnackbar'
 const AddVendor = () => {
     const url = process.env.REACT_APP_API_BASE_URL;
     const [isSnackBar, setIsSnackBar] = useState(false);
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const [variant, setVariant] = useState('');
     const [snackBarMsg, setSnackBarMsg] = useState('');
     const [vendorType, setVendorType] = useState([]);
@@ -153,7 +153,7 @@ const AddVendor = () => {
         getCountryList();
         fetchVedorTypeList();
         fetchbrandList();
-    }, [])
+    }, [fetchVedorTypeList, fetchbrandList])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -179,7 +179,7 @@ const AddVendor = () => {
     }
 
     const handleChange = (e) => {
-        const { name, value, type } = e.target;
+        const { name, value } = e.target;
         setFormData((PrevData) => ({
             ...PrevData,
             [name]: value,

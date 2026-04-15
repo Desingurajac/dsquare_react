@@ -6,7 +6,7 @@ import DSButton from '../../components/ds-button/DSButton';
 import { Grid, Typography } from '@mui/material';
 import { Form, Image } from 'react-bootstrap';
 import DSInput from '../../components/ds-input/DSInput';
-import DSRadio from '../../components/ds-radio/DSRadio';
+// import DSRadio from '../../components/ds-radio/DSRadio';
 import { FaUser } from 'react-icons/fa';
 import DSSnackbar from '../../components/ds-snackbar/DSSnackbar';
 
@@ -15,11 +15,11 @@ const url = process.env.REACT_APP_API_BASE_URL;
 
 const Signup = () => {
 
-  const genderOption = [{ value: "male", label: "Male", color: "black" },
-  { value: "female", label: "Female", color: "black" },
-  { value: "other", label: "Other", color: "black" }
-  ]
-  const [Error, setError] = useState('');
+  // const genderOption = [{ value: "male", label: "Male", color: "black" },
+  // { value: "female", label: "Female", color: "black" },
+  // { value: "other", label: "Other", color: "black" }
+  // ]
+  // const [Error, setError] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [resData, setData] = useState('');
   const [isSnackBar, setIsSnackBar] = useState(false);

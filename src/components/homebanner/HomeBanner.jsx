@@ -3,9 +3,7 @@ import { Container, Col, Row } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
 import Image from 'react-bootstrap/Image';
 import './HomeBanner.css';
-import Card from 'react-bootstrap/Card';
-// import SplitPane from 'react-split-pane';
-
+// import Card from 'react-bootstrap/Card';
 
 const HomeBanner = () => {
 
