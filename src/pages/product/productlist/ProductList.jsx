@@ -10,9 +10,7 @@ const ProductList = () => {
     const [formData, setFormData] = useState([])
     const isFetched = useRef(false);
 
-
-    useEffect(() => {
-        const fetchProducts = async () => {
+ const fetchProducts = async () => {
             if (isFetched.current) return;
             try {
                 const productListUrl = `${url}/product/product-list`;
@@ -27,6 +25,8 @@ const ProductList = () => {
                 console.error('Error fetching product list:', error.message);
             }
         }
+    useEffect(() => {
+       
         fetchProducts();
     }, [fetchProducts]);
 
