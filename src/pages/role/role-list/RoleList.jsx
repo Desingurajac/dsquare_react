@@ -18,7 +18,6 @@ const RoleList = () => {
                     if (status === 200 || status === 201) {
                         const token = response.data.token;
                         const decodeToken = jwtDecode(token);
-                        console.log(decodeToken)
                         const data = decodeToken.data;
                         const updateFormData = data.map((item, index) => ({
                             RoleName: item.roleName,

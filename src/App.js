@@ -5,7 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import {Home,Contactus,Dashboard,Forgotpassword,AddNewProduct,
         Profile,Signup,NotFound,ProductList, AddRole, AddVendor, 
-        VendorList, RoleList} from './lazyloading'
+        VendorList, RoleList,AddDomain,ViewDomain,EditDomain,
+        AddSubDomain,
+        ViewSubDomain} from './lazyloading'
 import { Signin } from './pages/signin/Signin';
 import Layout from './Layout';
 
@@ -31,6 +33,12 @@ function App() {
           <Route path='/contact-us' element={<Contactus/>} />
           <Route path='/add-role' element={<AddRole />} />
           <Route path='/role-list' element={<RoleList />} />
+
+          <Route path='/add-domain' element={<AddDomain />} />
+          <Route path='/view-domain' element={<ViewDomain />} />
+          <Route path='/edit-domain' element={<EditDomain />} />
+          <Route path='/add-subdomain' element={<AddSubDomain />} />
+          <Route path='/view-subdomain' element={<ViewSubDomain />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
