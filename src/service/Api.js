@@ -1,5 +1,6 @@
 
 import axios from 'axios'
+import { isTokenExpired } from '../utils/Auth';
 
 
 const baseUrl = process.env.REACT_APP_API_BASE_URL;
@@ -29,12 +30,15 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    //   if(error.response?.status === 401){
-    //     console.error("Unauthorized: Please log in again.");
-    //   }
-    //   return Promise.reject(error);
-    // }
-    if (error.response) {
+     if (error.response) {
+      if (error.response?.status === 401) {
+        // Check if token is expired
+        const token = localStorage.getItem("authToken");
+        if (isTokenExpired(token)) {
+          localStorage.removeItem("authToken"); // Clear token
+          window.location.href = "/login"; // Redirect to login page
+        }
+      }
       switch (error.response.status) {
         case 400:
           console.error("Bad Request: Token expired or invalid input.");

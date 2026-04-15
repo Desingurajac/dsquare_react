@@ -22,7 +22,6 @@ const AddVendor = () => {
     const [state, setState] = useState([]);
     const [city, setCity] = useState([]);
     const [brand, setBrand] = useState([]);
-    const formRef = useRef(null);
     const initialFormData = {
         vendorname: "",
         vendortype_id: "",
@@ -96,7 +95,6 @@ const AddVendor = () => {
                 const token = response.data.token;
                 const decodeToken = jwtDecode(token);
                 const data = decodeToken.Data;
-
                 const formatedOption = data.map(item => ({
                     value: item.id,
                     label: item.name
@@ -203,7 +201,6 @@ const AddVendor = () => {
                     if (status === 200 || status === 201) {
                         const token = response.data.token;
                         const decodeToken = jwtDecode(token);
-                        console.log(decodeToken)
                         setSnackBarMsg(decodeToken.message)
                         fetchVedorTypeList();
                         setVariant('success');
@@ -227,167 +224,167 @@ const AddVendor = () => {
     return (
         <div>
             {/* <div> */}
-                <Form className='frmpad' ref={formRef} onSubmit={handleSubmit}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={12}>
-                            <Typography
-                                className='fw-bold'>
-                                Add Vendor Details:
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <DSInput label='Vendor Name'
-                                type='text'
-                                name='vendorname'
-                                value={formData.vendorname}
-                                onChange={handleChange}
-                                required={true} >
-                            </DSInput>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <DSInput
-                                label='Vendor Type'
-                                type='select'
-                                name='vendortype_id'
-                                value={formData.vendortype_id}
-                                onChange={handleChange}
-                                select={true}
-                                options={vendorType}
-                                addoption={true}
-                                onClick={handleOpenAddvendorDialog}
-                                addlabel='Add Vendor Type'
-                                required={true}></DSInput>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <DSInput label='Credit Terms'
-                                type='number'
-                                name='creditterm'
-                                value={formData.creditterm}
-                                onChange={handleChange}
-                                required={true} >
-                            </DSInput>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <DSInput label='Lead Time'
-                                type='number'
-                                name='leadtime'
-                                value={formData.leadtime}
-                                onChange={handleChange}
-                                required={true} >
-                            </DSInput>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <DSInput label='Address1'
-                                type='text'
-                                name='address1'
-                                value={formData.address1}
-                                onChange={handleChange}
-                                required={true} >
-                            </DSInput>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <DSInput label='Address2'
-                                type='text'
-                                name='address2'
-                                value={formData.address2}
-                                onChange={handleChange}
-                            >
-                            </DSInput>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <DSInput
-                                label='Country'
-                                type='select'
-                                name='countryid'
-                                value={formData.countryid}
-                                onChange={handleChange}
-                                select={true}
-                                options={country}
-                                addoption={false}
-                                addlabel='Add Country'
-                                onselect={fetchStateList}
-                                required={true}></DSInput>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <DSInput
-                                label='State'
-                                type='select'
-                                name='stateid'
-                                value={formData.stateid}
-                                onChange={handleChange}
-                                select={true}
-                                options={state}
-                                addoption={false}
-                                addlabel='Add State'
-                                onselect={fetchCityList}
-                                required={true}></DSInput>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <DSInput
-                                label='City'
-                                type='select'
-                                name='cityid'
-                                value={formData.cityid}
-                                onChange={handleChange}
-                                select={true}
-                                options={city}
-                                addoption={false}
-                                addlabel='Add City'
-                                required={true}></DSInput>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <DSInput label='Zip Code'
-                                type='number'
-                                name='zipcode'
-                                value={formData.zipcode}
-                                onChange={handleChange}
-                                required={true} >
-                            </DSInput>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <DSInput label='Mobile Number'
-                                type='number'
-                                name='mobileno'
-                                value={formData.mobileno}
-                                onChange={handleChange}
-                                required={true} >
-                            </DSInput>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <DSInput label='Contuct Number'
-                                type='number'
-                                name='contactno'
-                                value={formData.contactno}
-                                onChange={handleChange}
-                                >
-                            </DSInput>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <DSInput label='Email'
-                                type='email'
-                                name='emailid'
-                                value={formData.emailid}
-                                onChange={handleChange}
-                                required={true} >
-                            </DSInput>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <DSInput
-                                label='Selec Brand Name'
-                                type='select'
-                                name='brandid'
-                                value={formData.brandid}
-                                onChange={handleChange}
-                                select={true}
-                                options={brand}
-                                required={true}></DSInput>
-                        </Grid>
-
-                        <Grid item xs={12}>
-                            <DSButton type="submit" text='Add' className='fw-bold'></DSButton>
-                        </Grid>
+            <Form className='frmpad' onSubmit={handleSubmit}>
+                <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                        <Typography
+                            className='fw-bold'>
+                            Add Vendor Details:
+                        </Typography>
                     </Grid>
-                </Form>
+                    <Grid item xs={3}>
+                        <DSInput label='Vendor Name'
+                            type='text'
+                            name='vendorname'
+                            value={formData.vendorname}
+                            onChange={handleChange}
+                            required={true} >
+                        </DSInput>
+                    </Grid>
+                    <Grid item xs={3}>
+                        <DSInput
+                            label='Vendor Type'
+                            type='select'
+                            name='vendortype_id'
+                            value={formData.vendortype_id}
+                            onChange={handleChange}
+                            select={true}
+                            options={vendorType}
+                            addoption={true}
+                            onClick={handleOpenAddvendorDialog}
+                            addlabel='Add Vendor Type'
+                            required={true}></DSInput>
+                    </Grid>
+                    <Grid item xs={3}>
+                        <DSInput label='Credit Terms'
+                            type='number'
+                            name='creditterm'
+                            value={formData.creditterm}
+                            onChange={handleChange}
+                            required={true} >
+                        </DSInput>
+                    </Grid>
+                    <Grid item xs={3}>
+                        <DSInput label='Lead Time'
+                            type='number'
+                            name='leadtime'
+                            value={formData.leadtime}
+                            onChange={handleChange}
+                            required={true} >
+                        </DSInput>
+                    </Grid>
+                    <Grid item xs={3}>
+                        <DSInput label='Address1'
+                            type='text'
+                            name='address1'
+                            value={formData.address1}
+                            onChange={handleChange}
+                            required={true} >
+                        </DSInput>
+                    </Grid>
+                    <Grid item xs={3}>
+                        <DSInput label='Address2'
+                            type='text'
+                            name='address2'
+                            value={formData.address2}
+                            onChange={handleChange}
+                        >
+                        </DSInput>
+                    </Grid>
+                    <Grid item xs={3}>
+                        <DSInput
+                            label='Country'
+                            type='select'
+                            name='countryid'
+                            value={formData.countryid}
+                            onChange={handleChange}
+                            select={true}
+                            options={country}
+                            addoption={false}
+                            addlabel='Add Country'
+                            onselect={fetchStateList}
+                            required={true}></DSInput>
+                    </Grid>
+                    <Grid item xs={3}>
+                        <DSInput
+                            label='State'
+                            type='select'
+                            name='stateid'
+                            value={formData.stateid}
+                            onChange={handleChange}
+                            select={true}
+                            options={state}
+                            addoption={false}
+                            addlabel='Add State'
+                            onselect={fetchCityList}
+                            required={true}></DSInput>
+                    </Grid>
+                    <Grid item xs={3}>
+                        <DSInput
+                            label='City'
+                            type='select'
+                            name='cityid'
+                            value={formData.cityid}
+                            onChange={handleChange}
+                            select={true}
+                            options={city}
+                            addoption={false}
+                            addlabel='Add City'
+                            required={true}></DSInput>
+                    </Grid>
+                    <Grid item xs={3}>
+                        <DSInput label='Zip Code'
+                            type='number'
+                            name='zipcode'
+                            value={formData.zipcode}
+                            onChange={handleChange}
+                            required={true} >
+                        </DSInput>
+                    </Grid>
+                    <Grid item xs={3}>
+                        <DSInput label='Mobile Number'
+                            type='number'
+                            name='mobileno'
+                            value={formData.mobileno}
+                            onChange={handleChange}
+                            required={true} >
+                        </DSInput>
+                    </Grid>
+                    <Grid item xs={3}>
+                        <DSInput label='Contuct Number'
+                            type='number'
+                            name='contactno'
+                            value={formData.contactno}
+                            onChange={handleChange}
+                        >
+                        </DSInput>
+                    </Grid>
+                    <Grid item xs={3}>
+                        <DSInput label='Email'
+                            type='email'
+                            name='emailid'
+                            value={formData.emailid}
+                            onChange={handleChange}
+                            required={true} >
+                        </DSInput>
+                    </Grid>
+                    <Grid item xs={3}>
+                        <DSInput
+                            label='Selec Brand Name'
+                            type='select'
+                            name='brandid'
+                            value={formData.brandid}
+                            onChange={handleChange}
+                            select={true}
+                            options={brand}
+                            required={true}></DSInput>
+                    </Grid>
+
+                    <Grid item xs={12}>
+                        <DSButton type="submit" text='Add' className='fw-bold'></DSButton>
+                    </Grid>
+                </Grid>
+            </Form>
             {/* </div> */}
             {dialogOpen &&
                 <div>
@@ -415,7 +412,7 @@ const AddVendor = () => {
                 <DSSnackbar
                     open={isSnackBar}
                     message={snackBarMsg}
-                    variant="error"
+                    variant={variant}
                     onClose={() => setIsSnackBar(false)}
                 />
             }

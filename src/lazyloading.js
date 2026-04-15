@@ -17,8 +17,15 @@ const RoleList = React.lazy(() => import("./pages/role/role-list/RoleList"));
 
 const AddVendor = React.lazy(() => import("./pages/vendor/addvendor/AddVendor"));
 const VendorList = React.lazy(() =>import("./pages/vendor/vendorlist/VendorList"))
+
+const AddDomain = React.lazy(() => import("./pages/domain/add-domain/AddDomain"));
+const ViewDomain = React.lazy(() => import("./pages/domain/view-domain/ViewDomain"));
+const EditDomain = React.lazy(() => import("./pages/domain/edit-domain/EditDomain"));
+const AddSubDomain = React.lazy(() => import("./pages/subdomain/add-subdomain/AddSubDomain"));
+const ViewSubDomain = React.lazy(() => import("./pages/subdomain/view-subdomain/ViewSubDomain"));
 export {
     Home, Contactus, Dashboard, Forgotpassword,
     AddNewProduct, Profile, Signup, NotFound, ProductList,
-    AddRole, AddVendor,VendorList,RoleList
+    AddRole, AddVendor,VendorList,RoleList,AddDomain,ViewDomain,
+    EditDomain,AddSubDomain,ViewSubDomain
 };

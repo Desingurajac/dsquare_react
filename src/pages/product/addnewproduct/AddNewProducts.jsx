@@ -469,10 +469,14 @@ const AddNewProducts = () => {
       <Form className='frmpad' onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           {/* Title */}
-          <Grid item xs={12}>
+          <Grid item xs={6}>
             <Typography className='fw-bold'>
               Add New Product
             </Typography>
+          </Grid>
+          <Grid item xs={6} className='view-grid'>
+            <DSButton type='button' text="View" className='view-btn' onClick={productList}></DSButton>
+            {/* <Button type='button' variant="contained" onClick={productList}>Product List</Button> */}
           </Grid>
 
           {/* Product Name */}
@@ -855,14 +859,8 @@ const AddNewProducts = () => {
               placeholder='Enter the product description'
               required />
           </Grid>
-          <Grid item xs={12} className='rightAlign'>
-
-          </Grid>
-          <Grid item xs={6} className='rightAlign'>
-            <DSButton type='button' text="Product List" className='cust-btn' onClick={productList}></DSButton>
-            {/* <Button type='button' variant="contained" onClick={productList}>Product List</Button> */}
-          </Grid>
-          <Grid item xs={6} className='rightAlign'>
+     
+          <Grid item xs={12}>
             <DSButton type='submit' text='Submit'></DSButton>
           </Grid>
 

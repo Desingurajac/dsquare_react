@@ -67,13 +67,30 @@ const Role = () => {
                         </Typography>
                     </Grid>
                     <Grid item xs={4}>
-                        <DSInput label='Role Name' type='text' name='roleName' value={formData.roleName} onChange={handleChange} required={true} ></DSInput>
+                        <DSInput 
+                        label='Role Name' 
+                        type='text' 
+                        name='roleName' 
+                        value={formData.roleName} 
+                        onChange={handleChange} 
+                        required={true} ></DSInput>
                     </Grid>
                     <Grid item xs={4}>
-                        <DSSwitch label='IsActive' checked={formData.isactive} onChange={handleChange} name='isactive'></DSSwitch>
+                        <DSSwitch 
+                        label='IsActive' 
+                        checked={formData.isactive} 
+                        onChange={handleChange} 
+                        name='isactive'></DSSwitch>
                     </Grid>
                     <Grid item xs={4}>
-                        <DSTextArea name='description' className='textfield' value={formData.description} onChange={handleChange} placeholder='Enter the Description' minrows='1' required={true}></DSTextArea>
+                        <DSTextArea 
+                        name='description' 
+                        className='textfield' 
+                        value={formData.description} 
+                        onChange={handleChange} 
+                        placeholder='Enter the Description' 
+                        minrows='1' 
+                        required={true}></DSTextArea>
                     </Grid>
                     <Grid item xs={12}>
                         <DSButton type='submit' text='Save'  ></DSButton>

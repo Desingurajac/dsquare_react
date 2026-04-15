@@ -6,6 +6,7 @@ import { LuLayoutDashboard } from "react-icons/lu";
 import { RiProductHuntLine } from "react-icons/ri";
 import { FaAngleDown, FaAngleRight, FaPhoneSquareAlt } from "react-icons/fa";
 import { HiUsers } from "react-icons/hi2";
+import { MdDomain } from 'react-icons/md';
 
 function Sidebar({ showSideBar, isVisible }) {
   const [openModule, setOpenModule] = useState(null);
@@ -15,6 +16,22 @@ function Sidebar({ showSideBar, isVisible }) {
       path: "/dashboard",
       icon: <LuLayoutDashboard />,
       subModules: []
+    },
+    {
+      name: "Domain",
+      icon: <MdDomain />,
+      subModules: [
+        { name: "Add Domain", path: "/add-domain" },
+        { name: "View Domain", path: "/view-domain" },
+      ]
+    },
+    {
+      name: "Sub Domain",
+      icon: <MdDomain />,
+      subModules: [
+        { name: "Add Sub Domain", path: "/add-subdomain" },
+        { name: "View Sub Domain", path: "/view-subdomain" },
+      ]
     },
     {
       name: "Role Management",
@@ -36,11 +53,11 @@ function Sidebar({ showSideBar, isVisible }) {
       name: "Vendor",
       icon: <HiUsers />,
       subModules: [
-        { name: "Add Vendor",path: "/add-vendor" },
-        { name: "Vendor List" , path: "/vendor-list" },
+        { name: "Add Vendor", path: "/add-vendor" },
+        { name: "Vendor List", path: "/vendor-list" },
       ],
     },
-  
+
 
     {
       name: "Contact Us",
@@ -49,9 +66,9 @@ function Sidebar({ showSideBar, isVisible }) {
       subModules: [],
     }
   ];
-   
-  const toggleModule = (moduleName) =>{
-   setOpenModule(openModule === moduleName ? null : moduleName)
+
+  const toggleModule = (moduleName) => {
+    setOpenModule(openModule === moduleName ? null : moduleName)
   };
 
   return (
@@ -59,7 +76,7 @@ function Sidebar({ showSideBar, isVisible }) {
       <img src={DSwhite} alt='DSwhite' className='logo' />
       <ul>
         {sideBarModules.map((module, index) => (
-          <li  key={index}>
+          <li key={index}>
             {module.subModules.length > 0 ? (
               <>
                 <div className='submodule' onClick={() => toggleModule(module.name)}>
@@ -71,7 +88,7 @@ function Sidebar({ showSideBar, isVisible }) {
                     {module.subModules.map((subModule, subIndex) => (
                       <li key={subIndex}>
                         <Link to={subModule.path} className='sidebar-link'>
-                        <FaAngleRight /> {subModule.name}
+                          <FaAngleRight /> {subModule.name}
                         </Link>
                       </li>
                     ))}
