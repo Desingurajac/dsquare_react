@@ -28,7 +28,7 @@ const ProductList = () => {
             }
         }
         fetchProducts();
-    }, []);
+    }, [fetchProducts]);
 
     useEffect(() => {
     }, [formData]);

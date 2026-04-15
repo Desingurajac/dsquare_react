@@ -1,8 +1,7 @@
-import { Button, Paper, Switch, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from '@mui/material'
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import './DSTableContainer.css';
 import DSButton from '../ds-button/DSButton';
-import DSSwitch from '../ds-switch/DSSwitch';
 
 const DSTableContainer = ({ columns, data, rowsPerPageOptions, classname, title, action, onActionClick }) => {
     const [page, setPage] = useState(0);

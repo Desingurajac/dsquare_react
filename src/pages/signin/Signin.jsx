@@ -17,7 +17,7 @@ const url = process.env.REACT_APP_API_BASE_URL;
 export const Signin = () => {
   const remeberWarning = "We'll keep you signed in on this device. For your account's security, we'll still ask for your password if you're updating sensitive information. Use this option only on your personal computer or device."
   const [error, setError] = useState('');
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const [rememberMe, setRememberMe] = useState(false);
 
   const initialFormData = {

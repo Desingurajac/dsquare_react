@@ -1,8 +1,8 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+// import { useLocation } from 'react-router-dom'
 
 function UserProfile() {
-  const location = useLocation();
+  // const location = useLocation();
   return (
     <div>UserProfile</div>
   )

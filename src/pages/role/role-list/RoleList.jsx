@@ -43,7 +43,7 @@ const RoleList = () => {
     }, [columns, formData])
     useEffect(() => {
         roleList();
-    }, [])
+    }, [roleList])
     return (
         <div className='frmpad'>
             <DSTableContainer columns={columns} data={formData} rowsPerPageOptions={[5, 10, 25]} title='Role List'></DSTableContainer>

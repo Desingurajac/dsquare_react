@@ -9,8 +9,8 @@ import { useNavigate } from 'react-router-dom';
 const ViewSubDomain = () => {
   const navigate = useNavigate();
   const url = process.env.REACT_APP_API_BASE_URL;
-  const [variant, setVariant] = useState();
-  const [snackBarMsg, setSnackBarMsg] = useState();
+  // const [variant, setVariant] = useState();
+  // const [snackBarMsg, setSnackBarMsg] = useState();
   const [isSnackBar, setIsSnackBar] = useState();
   const [columns, setColumns] = useState([]);
   const [formData, setFormData] = useState([]);
@@ -54,7 +54,7 @@ const ViewSubDomain = () => {
     }, [columns, formData])
     useEffect(() => {
       subDomainList();
-    }, []);
+    }, [subDomainList]);
 
   const handleActionClick = (row) => {
     alert(`Updating: ${row.domainName}`);

@@ -81,7 +81,7 @@ const AddNewProducts = () => {
 
   useEffect(() => {
     fetchbrandList();
-  }, []);
+  }, [fetchbrandList]);
   const fetchMainCategoryList = async (val) => {
     try {
       const getMCListUrl = `${url}/product/main-category-list`;

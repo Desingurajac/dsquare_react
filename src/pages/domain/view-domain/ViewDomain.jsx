@@ -55,7 +55,7 @@ const ViewDomain = () => {
   }, [columns, formData])
   useEffect(() => {
     domainList();
-  }, []);
+  }, [domainList]);
 
   const handleActionClick = (row) => {
     alert(`Updating: ${row.domainName}`);
