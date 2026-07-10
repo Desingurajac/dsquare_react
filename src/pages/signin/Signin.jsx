@@ -45,9 +45,11 @@ export const Signin = () => {
     e.preventDefault();
     setError('');
     const loginUrl = (`${url}/user/login`);
+    console.log('Form Data:', formData);
     apiService.post(loginUrl, formData)
       .then((response) => {
         const status = response.status;
+        console.log('Response status:', status);
         if (status === 200) {
           const token = response.data.Token;
           localStorage.setItem('authToken', token);
